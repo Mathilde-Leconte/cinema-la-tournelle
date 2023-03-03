@@ -26,15 +26,15 @@ let creditFilm = (idFilm, callback) => {
         .catch(error => console.log(error));
 };
 
-let titre        = document.querySelector('#film1_titre');
-let synopsis     = document.querySelector('#film1_synopsis');
-let pays         = document.querySelector('#film1_pays');
-let casting      = document.querySelector('#film1_casting');
-let duree        = document.querySelector('#film1_duree');
-let recompenses  = document.querySelector('#film1_recompense');
-let realisation  = document.querySelector('#film1_realisation');
-let distributeur = document.querySelector('#film1_distributeur');
-let coutLocation = document.querySelector('#film1_coutLocation');
+let titre        = document.querySelector('#film_titre');
+let synopsis     = document.querySelector('#film_synopsis');
+let pays         = document.querySelector('#film_pays');
+let casting      = document.querySelector('#film_casting');
+let duree        = document.querySelector('#film_duree');
+let recompenses  = document.querySelector('#film_recompense');
+let realisation  = document.querySelector('#film_realisation');
+let distributeur = document.querySelector('#film_distributeur');
+let coutLocation = document.querySelector('#film_coutLocation');
 
 // si l'input qui à l'ID recherche existe alors
 if (document.getElementById('recherche')) {

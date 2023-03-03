@@ -1,0 +1,86 @@
+{% extends 'base.back.html.twig' %}
+
+{% block title %}Film{% endblock %}
+
+{% block body %}
+	<a href="{{ path('app_admin_film_index') }}" class="btn btn-inverse-secondary mb-3">Voir la liste</a>
+
+    <h1>Film</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ film.id }}</td>
+            </tr>
+            <tr>
+                <th>Titre</th>
+                <td>{{ film.titre }}</td>
+            </tr>
+            <tr>
+                <th>Realisation</th>
+                <td>{{ film.realisation }}</td>
+            </tr>
+            <tr>
+                <th>Casting</th>
+                <td>{{ film.casting }}</td>
+            </tr>
+            <tr>
+                <th>Pays</th>
+                <td>{{ film.pays }}</td>
+            </tr>
+            <tr>
+                <th>Duree</th>
+                <td>{{ film.duree }}</td>
+            </tr>
+            <tr>
+                <th>Synopsis</th>
+                <td>{{ film.synopsis }}</td>
+            </tr>
+            <tr>
+                <th>Recompense</th>
+                <td>{{ film.recompense }}</td>
+            </tr>
+            <tr>
+                <th>Distributeur</th>
+                <td>{{ film.distributeur }}</td>
+            </tr>
+            <tr>
+                <th>CoutLocation</th>
+                <td>{{ film.coutLocation }}</td>
+            </tr>
+            <tr>
+                <th>VO/th>
+                <td>{{ film.voFilm ? 'OUI' : 'NON' }}</td>
+            </tr>
+            <tr>
+                <th>VOST</th>
+                <td>{{ film.vostFilm ? 'OUI' : 'NON' }}</td>
+            </tr>
+            <tr>
+                <th>2D</th>
+                <td>{{ film.deuxDFilm ? 'OUI' : 'NON' }}</td>
+            </tr>
+            <tr>
+                <th>3D</th>
+                <td>{{ film.troisDFilm ? 'OUI' : 'NON' }}</td>
+            </tr>
+            <tr>
+                <th>Âge</th>
+                <td>{{ film.age }}</td>
+            </tr>
+            <tr>
+                <th>À Partir de ... ans</th>
+                <td>{{ film.aPartir ? 'OUI' : 'NON' }}</td>
+            </tr>
+            <tr>
+                <th>Interdit aux moins de ... ans</th>
+                <td>{{ film.interditAns ? 'OUI' : 'NON' }}</td>
+            </tr>
+            <tr>
+                <th>À Partir de ... mois</th>
+                <td>{{ film.aPartirMois ? 'OUI' : 'NON' }}</td>
+            </tr>
+        </tbody>
+    </table>
+{% endblock %}

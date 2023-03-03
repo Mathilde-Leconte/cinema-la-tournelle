@@ -1,0 +1,21 @@
+{% extends 'base.back.html.twig' %}
+
+{% block title %}Nouveau film{% endblock %}
+
+{% block body %}
+	<a href="{{ path('app_admin_film_index') }}" class="btn btn-inverse-secondary mb-3">Voir la liste</a>
+
+    <h1>Ajouter un film</h1>
+    
+    {# input de recherche de films #}
+    <div class=" mb-4 p-2">
+        <input type="text" id="recherche" class="me-2"> 
+        <button id="lancerRecherche" class="btn btn-inverse-light">Rechercher</button>
+        <div id="resultats">
+    </div>
+    </div>
+
+    {{ include('admin_film/_form.html.twig') }}
+
+
+{% endblock %}
