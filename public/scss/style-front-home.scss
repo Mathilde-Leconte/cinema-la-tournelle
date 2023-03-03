@@ -1,0 +1,53 @@
+
+/* --------- CARD --------- */
+.cards{
+    margin: 2vw;
+    position: relative;
+    justify-content: space-around;
+}
+
+.card{
+    max-width: 15vw;
+    margin: 1vw;
+
+}
+
+.films-affiche-border {
+    width: 61vw;
+}
+
+.btn-card{
+    position: relative;
+    justify-items: center;
+    width: 10vw;
+    font-size: 1vw;
+}
+
+/* --------- MODAL -------- */
+.modal-films-texte{
+    display: flex;
+    flex-direction: row;
+    margin-right: 10vw;
+}
+.modal-affiche{
+    width: 70vw;   
+}
+
+.modal-affiche img{
+    width: 199%;   
+}
+
+/* ------- PROCHAINE ------ */
+
+.prochaine-seance{
+    max-width: 30vw;
+}
+
+
+/* ##################################################################### */
+/* ############################## CAROUSEL ############################# */
+/* ##################################################################### */
+
+.home-carousel{
+    width: 30vw;
+}
