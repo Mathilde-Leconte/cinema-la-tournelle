@@ -1,8 +1,6 @@
-const APIMOVIE         = '20c7b8d480d4a435703ad88460e996a5';
-const URLAPIMOVIE = `https://api.themoviedb.org/3/search/movie?api_key=${APIMOVIE}&language=fr&region=FR&include_image_language=fr&query=`;
+const APIMOVIE          = '20c7b8d480d4a435703ad88460e996a5';
+const URLAPIMOVIE       = `https://api.themoviedb.org/3/search/movie?api_key=${APIMOVIE}&language=fr&region=FR&include_image_language=fr&query=`;
 const AFFICHESDIRECTORY = 'https://image.tmdb.org/t/p/w500';
-
-// console.log(URLAPIMOVIE);
 
 
 let rechercherFilm = (titre, callback, page = 1) => {
@@ -59,7 +57,7 @@ if (document.getElementById('recherche')) {
                         let ficheFilm = document.createElement('div');
                         // Dans cette div je met le titre
                         ficheFilm.innerHTML = datas.results[i].title;
-                        // j'ajoute la classe fiche_film a mes div
+                        // j'ajoute la classe fiche_film à mes div
                         ficheFilm.classList.add('fiche_film');
 
                         // je recupére les datas via la fonction detailsFilm
@@ -126,7 +124,7 @@ if (document.getElementById('recherche')) {
                             ficheFilm.appendChild(affiche);
                         }else{
                             let affiche = document.createElement('img');
-                            affiche.setAttribute('src', "../image/no-image-found.jpeg");
+                            affiche.setAttribute('src', "{{ asset('../image/no-image-found.jpeg') }}");
                             ficheFilm.appendChild(affiche);
                         }
                         // Cet div je l'ajoute à ma div résulstat
@@ -139,10 +137,5 @@ if (document.getElementById('recherche')) {
                     document.getElementById('resutats').innerHTML='Pas de films trouvé';
                 }
             });
-    
     });
-
-
-    }
-
-    
+}
