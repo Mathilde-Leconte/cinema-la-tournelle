@@ -110,17 +110,12 @@
 								</div>
 							</div>
 						</li>
+
+						{# SIDEBAR #}
 						<li class="nav-item nav-category">
-							<span class="nav-link">LIVROMATIX 3000</span>
+							<span class="nav-link">FILMS ET ÉVENEMENTS</span>
 						</li>
-						<li class="nav-item menu-items">
-                            <a class="nav-link" href="{{ path('app_admin_dashboard') }}">
-                                <span class="menu-icon">
-                                    <i class="mdi mdi-calendar"></i>
-                                </span>
-                                <span class="menu-title">Programmation</span>
-                            </a>
-                        </li>
+	
 						<li class="nav-item menu-items">
 							<a class="nav-link" href="{{ path('app_admin_film_index') }}">
 								<span class="menu-icon">
@@ -137,6 +132,47 @@
 								<span class="menu-title">Ajouter un évenement</span>
 							</a>
 						</li>
+						<li class="nav-item nav-category">
+							<span class="nav-link">SÉANCE</span>
+						</li>
+
+						<li class="nav-item menu-items">
+                            <a class="nav-link" href="{{ path('app_admin_dashboard') }}">
+                                <span class="menu-icon">
+                                    <i class="mdi mdi-calendar"></i>
+                                </span>
+                                <span class="menu-title">Programmation</span>
+                            </a>
+                        </li>
+						<li class="nav-item menu-items">
+							<a class="nav-link" href="{{ path('app_admin_tarif_index') }}">
+								<span class="menu-icon">
+									<i class="mdi mdi-currency-eur"></i>
+								</span>
+								<span class="menu-title">Ajouter un tarifs</span>
+							</a>
+						</li>
+						<li class="nav-item menu-items">
+							<a class="nav-link" href="{{ path('app_admin_type_de_seance_index') }}">
+								<span class="menu-icon">
+									<i class="mdi mdi-format-list-bulleted-type"></i>
+								</span>
+								<span class="menu-title">Ajouter un type</span>
+							</a>
+						</li>
+
+						<li class="nav-item nav-category">
+							<span class="nav-link">GÉNÉRATRON 3000</span>
+						</li>
+
+						<li class="nav-item menu-items">
+                            <a class="nav-link" href="{{ path('app_admin_dashboard') }}">
+                                <span class="menu-icon">
+                                    <i class="mdi mdi-calendar"></i>
+                                </span>
+                                <span class="menu-title">Générer le livret</span>
+                            </a>
+                        </li>
 						<li class="nav-item menu-items">
 							<a class="nav-link" href="pages/tables/basic-table.html">
 								<span class="menu-icon">
@@ -209,6 +245,8 @@
 						</li>
 					</ul>
 				</nav>
+
+
 				<!-- partial -->
 				<div
 					class="container-fluid page-body-wrapper">

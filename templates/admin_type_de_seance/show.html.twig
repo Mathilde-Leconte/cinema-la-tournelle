@@ -1,0 +1,34 @@
+{% extends 'base.back.html.twig' %}
+
+{% block title %}Type Seance{% endblock %}
+
+{% block body %}
+    <a href="{{ path('app_admin_type_de_seance_index') }}" class="btn btn-inverse-secondary mb-3">Voir la liste</a>
+    <h1>TypeDeSeance</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ type_de_seance.id }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ type_de_seance.nom }}</td>
+            </tr>
+            <tr>
+                <th>Prive</th>
+                <td>{{ type_de_seance.prive ? 'OUI' : 'NON' }}</td>
+            </tr>
+            <tr>
+                <th>Publique</th>
+                <td>{{ type_de_seance.publique ? 'OUI' : 'NON' }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ type_de_seance.description }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+{% endblock %}

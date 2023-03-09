@@ -1,0 +1,15 @@
+{% extends 'base.back.html.twig' %}
+
+{% block title %}Modifier le type de séance{% endblock %}
+
+{% block body %}
+    <a href="{{ path('app_admin_type_de_seance_index') }}" class="btn btn-inverse-secondary mb-3">Voir la liste</a>
+    <div class="d-flex justify-content-between">
+    <h1>Modifier le type de séance</h1>
+    {{ include('admin_type_de_seance/_delete_form.html.twig') }}
+    </div>
+
+    {{ include('admin_type_de_seance/_form.html.twig', {'button_label': 'Enregistrer'}) }}
+
+
+{% endblock %}

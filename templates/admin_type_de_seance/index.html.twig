@@ -1,0 +1,59 @@
+{% extends 'base.back.html.twig' %}
+
+{% block title %}Type De Seance index{% endblock %}
+
+{% block body %}
+    <h1>Les Types de Séances</h1>
+    <a href="{{ path('app_admin_type_de_seance_new') }}" class="btn btn-inverse-success p-2 mb-2">Nouveau</a>
+
+    <table class="table">
+        <thead>
+            <tr>
+                {# <th>Id</th> #}
+                <th>Nom</th>
+                <th>Prive</th>
+                <th>Publique</th>
+                {# <th>Description</th> #}
+                <th>Tarif</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for type_de_seance in type_de_seances %}
+            <tr>
+                {# <td>{{ type_de_seance.id }}</td> #}
+                <td>{{ type_de_seance.nom }}</td>
+                <td>{{ type_de_seance.prive ? 'OUI' : 'NON' }}</td>
+                <td>{{ type_de_seance.publique ? 'OUI' : 'NON' }}</td>
+                {# <td>{{ type_de_seance.description }}</td> #}
+                <td>
+                    {% for tarif in tarifs %}
+                    {% if tarif.type_de_seance_id == type_de_seance.id %}
+                    <div>
+                        {{ tarif.nom }}
+                    </div>
+                    {% endif %}
+                    {% endfor %}
+                </td>
+                <td>
+                    <a href="{{ path('app_admin_type_de_seance_show', {'id': type_de_seance.id}) }}">
+                        <span class="menu-icon">
+                            <i class="mdi mdi-eye btn btn-rounded btn-inverse-primary m-1"></i>
+                        </span>
+                    </a>
+                    <a href="{{ path('app_admin_type_de_seance_edit', {'id': type_de_seance.id}) }}">
+                        <span class="menu-icon">
+                            <i class="mdi mdi-border-color btn btn-rounded btn-inverse-warning m-1"></i>
+                        </span>
+                    </a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">Aucun type de séance</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

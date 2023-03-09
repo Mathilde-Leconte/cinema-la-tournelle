@@ -1,0 +1,11 @@
+{% extends 'base.back.html.twig' %}
+
+{% block title %}Nouveau Type Seance{% endblock %}
+
+{% block body %}
+    <a href="{{ path('app_admin_type_de_seance_index') }}" class="btn btn-inverse-secondary mb-3">Voir la liste</a>
+    <h1>Ajouter un Type de Séance</h1>
+
+    {{ include('admin_type_de_seance/_form.html.twig') }}
+
+{% endblock %}
