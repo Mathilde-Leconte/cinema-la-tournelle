@@ -3,14 +3,13 @@
 {% block title %}Modifier Tarif{% endblock %}
 
 {% block body %}
-    <a href="{{ path('app_admin_tarif_index') }}" class="btn btn-inverse-secondary mb-3">Voir la liste/a>
+    <a href="{{ path('app_admin_tarif_index') }}" class="btn btn-inverse-secondary mb-3">Voir la liste</a>
     <div class="d-flex justify-content-between">
         <h1>Modifier le tarif</h1>
         {{ include('admin_tarif/_delete_form.html.twig') }}
     </div>
-   
-    {{ include('admin_tarif/_form.html.twig', {'button_label': 'Update'}) }}
+
+    {{ include('admin_tarif/_form.html.twig', {'button_label': 'Enregistrer'}) }}
 
 
 {% endblock %}
-

@@ -3,7 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Tarif;
-use App\Form\Tarif1Type;
+use App\Form\TarifType;
 use App\Repository\TarifRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -21,11 +21,12 @@ class AdminTarifController extends AbstractController
         ]);
     }
 
+
     #[Route('/new', name: 'app_admin_tarif_new', methods: ['GET', 'POST'])]
     public function new(Request $request, TarifRepository $tarifRepository): Response
     {
         $tarif = new Tarif();
-        $form = $this->createForm(Tarif1Type::class, $tarif);
+        $form = $this->createForm(TarifType::class, $tarif);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -51,7 +52,7 @@ class AdminTarifController extends AbstractController
     #[Route('/{id}/edit', name: 'app_admin_tarif_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Tarif $tarif, TarifRepository $tarifRepository): Response
     {
-        $form = $this->createForm(Tarif1Type::class, $tarif);
+        $form = $this->createForm(TarifType::class, $tarif);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {

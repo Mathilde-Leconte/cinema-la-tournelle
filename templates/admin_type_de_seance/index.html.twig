@@ -1,9 +1,9 @@
 {% extends 'base.back.html.twig' %}
 
-{% block title %}Type De Seance index{% endblock %}
+{% block title %}Type Seance index{% endblock %}
 
 {% block body %}
-    <h1>Les Types de Séances</h1>
+    <h1>Les Type de seances </h1>
     <a href="{{ path('app_admin_type_de_seance_new') }}" class="btn btn-inverse-success p-2 mb-2">Nouveau</a>
 
     <table class="table">
@@ -15,33 +15,30 @@
                 <th>Publique</th>
                 {# <th>Description</th> #}
                 <th>Tarif</th>
-                <th>Actions</th>
+                <th>actions</th>
             </tr>
         </thead>
         <tbody>
-        {% for type_de_seance in type_de_seances %}
+        {% for type_se_seance in type_se_seances %}
             <tr>
-                {# <td>{{ type_de_seance.id }}</td> #}
-                <td>{{ type_de_seance.nom }}</td>
-                <td>{{ type_de_seance.prive ? 'OUI' : 'NON' }}</td>
-                <td>{{ type_de_seance.publique ? 'OUI' : 'NON' }}</td>
-                {# <td>{{ type_de_seance.description }}</td> #}
+                {# <td>{{ type_se_seance.id }}</td> #}
+                <td>{{ type_se_seance.nom }}</td>
+                <td>{{ type_se_seance.prive ? 'Yes' : 'No' }}</td>
+                <td>{{ type_se_seance.publique ? 'Yes' : 'No' }}</td>
                 <td>
-                    {% for tarif in tarifs %}
-                    {% if tarif.type_de_seance_id == type_de_seance.id %}
-                    <div>
+                    {% for tarif in type_se_seance.tarifs %}
                         {{ tarif.nom }}
-                    </div>
-                    {% endif %}
                     {% endfor %}
                 </td>
+                {# <td>{{ type_se_seance.description }}</td> #}
+
                 <td>
-                    <a href="{{ path('app_admin_type_de_seance_show', {'id': type_de_seance.id}) }}">
+                    <a href="{{ path('app_admin_type_de_seance_show', {'id': type_se_seance.id}) }}">
                         <span class="menu-icon">
                             <i class="mdi mdi-eye btn btn-rounded btn-inverse-primary m-1"></i>
                         </span>
                     </a>
-                    <a href="{{ path('app_admin_type_de_seance_edit', {'id': type_de_seance.id}) }}">
+                    <a href="{{ path('app_admin_type_de_seance_edit', {'id': type_se_seance.id}) }}">
                         <span class="menu-icon">
                             <i class="mdi mdi-border-color btn btn-rounded btn-inverse-warning m-1"></i>
                         </span>
@@ -50,7 +47,7 @@
             </tr>
         {% else %}
             <tr>
-                <td colspan="6">Aucun type de séance</td>
+                <td colspan="6">Aucun type trouvé</td>
             </tr>
         {% endfor %}
         </tbody>

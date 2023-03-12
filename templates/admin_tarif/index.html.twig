@@ -3,7 +3,7 @@
 {% block title %}Tarif index{% endblock %}
 
 {% block body %}
-    <h1>Les Tarifs</h1>
+    <h1>Les Tarif</h1>
     <a href="{{ path('app_admin_tarif_new') }}" class="btn btn-inverse-success p-2 mb-2">Nouveau</a>
 
     <table class="table">
@@ -20,7 +20,7 @@
             <tr>
                 {# <td>{{ tarif.id }}</td> #}
                 <td>{{ tarif.nom }}</td>
-                <td>{{ tarif.Prix }}</td>
+                <td>{{ tarif.prix }}</td>
                 <td>
                     <a href="{{ path('app_admin_tarif_show', {'id': tarif.id}) }}">
                         <span class="menu-icon">
@@ -36,7 +36,7 @@
             </tr>
         {% else %}
             <tr>
-                <td colspan="4">Aucun Tarif trouvé</td>
+                <td colspan="4">Aucun tarif trouvé</td>
             </tr>
         {% endfor %}
         </tbody>

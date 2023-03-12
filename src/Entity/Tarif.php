@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\TarifRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: TarifRepository::class)]
@@ -16,11 +18,16 @@ class Tarif
     #[ORM\Column(length: 255)]
     private ?string $nom = null;
 
-    #[ORM\Column(length: 10)]
-    private ?string $Prix = null;
+    #[ORM\Column(length: 255)]
+    private ?string $prix = null;
 
-    #[ORM\ManyToOne(inversedBy: 'tarifs')]
-    private ?TypeDeSeance $typeDeSeance = null;
+    #[ORM\ManyToMany(targetEntity: TypeSeSeance::class, inversedBy: 'tarifs')]
+    private Collection $types;
+
+    public function __construct()
+    {
+        $this->types = new ArrayCollection();
+    }
 
         // MAGIC FUNCTION
         public function __toString()
@@ -47,26 +54,37 @@ class Tarif
 
     public function getPrix(): ?string
     {
-        return $this->Prix;
+        return $this->prix;
     }
 
-    public function setPrix(string $Prix): self
+    public function setPrix(string $prix): self
     {
-        $this->Prix = $Prix;
+        $this->prix = $prix;
 
         return $this;
     }
 
-    public function getTypeDeSeance(): ?TypeDeSeance
+    /**
+     * @return Collection<int, TypeSeSeance>
+     */
+    public function getTypes(): Collection
     {
-        return $this->typeDeSeance;
+        return $this->types;
     }
 
-    public function setTypeDeSeance(?TypeDeSeance $typeDeSeance): self
+    public function addType(TypeSeSeance $type): self
     {
-        $this->typeDeSeance = $typeDeSeance;
+        if (!$this->types->contains($type)) {
+            $this->types->add($type);
+        }
 
         return $this;
     }
 
+    public function removeType(TypeSeSeance $type): self
+    {
+        $this->types->removeElement($type);
+
+        return $this;
+    }
 }

@@ -4,7 +4,6 @@
 
 {% block body %}
     <a href="{{ path('app_admin_tarif_index') }}" class="btn btn-inverse-secondary mb-3">Voir la liste</a>
-
     <h1>Tarif</h1>
 
     <table class="table">
@@ -19,9 +18,10 @@
             </tr>
             <tr>
                 <th>Prix</th>
-                <td>{{ tarif.Prix }}</td>
+                <td>{{ tarif.prix }}</td>
             </tr>
         </tbody>
     </table>
+
 
 {% endblock %}

@@ -12,10 +12,10 @@ class EvenementType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('titre')
-            ->add('description')
-            ->add('duree')
-            ->add('collaboration')
+            ->add('titre', TextType::class, ["required" => false])
+            ->add('description', IntegerType::class, ["required" => false])
+            ->add('duree', TextType::class, ["required" => false])
+            ->add('collaboration', TextType::class, ["required" => false])
         ;
     }
 

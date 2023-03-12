@@ -42,25 +42,29 @@ class TarifRepository extends ServiceEntityRepository
 //    /**
 //     * @return Tarif[] Returns an array of Tarif objects
 //     */
-
-public function findByTypeID($type_id): array
-{   
-    $conn = $this->getEntityManager()->getConnection();
-
-    $sql = '
-        SELECT * FROM tarif ta
-        WHERE ta.type_de_seance_id > :type_de_seance_id
-        ORDER BY ta.type_de_seance_id ASC
-        ';
-    $stmt = $conn->prepare($sql);
-    $resultSet = $stmt->executeQuery(['type_de_seance_id' => $type_id]);
-
-    // returns an array of arrays (i.e. a raw data set)
-    return $resultSet->fetchAllAssociative();
-
-
-}
-
+    // public function getTarifNoms($tarifNom): array
+    // {
+    //     return $this->createQueryBuilder('ta')
+    //         ->join('ta.types', 'ty')
+    //         ->andWhere('ty.nom = :val')
+    //         ->setParameter('val', $tarifNom)
+    //         ->orderBy('t.id', 'ASC')
+    //         // ->setMaxResults(4)
+    //         ->getQuery()
+    //         ->getResult()
+    //     ;
+    // }
+    // public function getTarifNoms(): array
+    // {
+    //     return $this->createQueryBuilder('ta')
+    //         ->leftjoin('ta.types', 'ty')
+    //         ->addSelect('ty')
+    //         ->orderBy('t.id', 'DESC')
+    //         // ->setMaxResults(4)
+    //         ->getQuery()
+    //         ->getResult()
+    //     ;
+    // }
 
 //    public function findOneBySomeField($value): ?Tarif
 //    {
