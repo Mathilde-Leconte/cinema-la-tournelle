@@ -1,13 +1,12 @@
 {% extends 'base.back.html.twig' %}
 
-{% block title %}Film index{% endblock %}
+{% block title %}les films{% endblock %}
 
 {% block body %}
+<div>
     <h1>Les Films</h1>
     <a href="{{ path('app_admin_film_new') }}" class="btn btn-inverse-success p-2 mb-2">Nouveau</a>
-    
     <table class="table" data-toggle="table">
-
         <thead>
             <tr>
                 {# <th>Id</th> #}
@@ -16,18 +15,11 @@
                 {# <th>Casting</th> #}
                 {# <th>Pays</th> #}
                 <th data-sortable="true">Durée</th>
-                {# <th>Synopsis</th> #}
-                {# <th>Recompense</th> #}
+                {# <th>Récompense(s)</th> #}
                 {# <th>Distributeur</th> #}
-                {# <th>CoutLocation</th> #}
-                {# <th>VoFilm</th> #}
-                {# <th>VostFilm</th> #}
-                {# <th>DeuxDFilm</th> #}
-                {# <th>TroisDFilm</th> #}
-                {# <th>Age</th> #}
-                {# <th>APartir</th> #}
-                {# <th>InterditAns</th> #}
-                {# <th>APartirMois</th> #}
+                {# <th>Location</th> #}
+                {# <th>Synopsis</th> #}
+                <th data-sortable="true">Actif</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -40,30 +32,23 @@
                 {# <td>{{ film.casting }}</td> #}
                 {# <td>{{ film.pays }}</td> #}
                 <td>{{ film.duree }}</td>
-                {# <td>{{ film.synopsis }}</td> #}
                 {# <td>{{ film.recompense }}</td> #}
                 {# <td>{{ film.distributeur }}</td> #}
                 {# <td>{{ film.coutLocation }}</td> #}
-                {# <td>{{ film.voFilm ? 'Yes' : 'No' }}</td> #}
-                {# <td>{{ film.vostFilm ? 'Yes' : 'No' }}</td> #}
-                {# <td>{{ film.deuxDFilm ? 'Yes' : 'No' }}</td> #}
-                {# <td>{{ film.troisDFilm ? 'Yes' : 'No' }}</td> #}
-                {# <td>{{ film.age }}</td> #}
-                {# <td>{{ film.aPartir ? 'Yes' : 'No' }}</td> #}
-                {# <td>{{ film.interditAns ? 'Yes' : 'No' }}</td> #}
-                {# <td>{{ film.aPartirMois ? 'Yes' : 'No' }}</td> #}
+                {# <td>{{ film.synopsis }}</td> #}
+                <td>{{ film.isActive? 'Oui' : 'Non' }}</td> 
                 <td>
-                    <a href="{{ path('app_admin_film_show', {'id': film.id}) }}">
-                        <span class="menu-icon">
-                            <i class="mdi mdi-eye btn btn-rounded btn-inverse-primary m-1"></i>
-                        </span>
-                    </a>
-    
-                    <a href="{{ path('app_admin_film_edit', {'id': film.id}) }}">
-                        <span class="menu-icon">
-                            <i class="mdi mdi-border-color btn btn-rounded btn-inverse-warning m-1"></i>
-                        </span>
-                    </a>
+                <a href="{{ path('app_admin_film_show', {'id': film.id}) }}">
+                    <span class="menu-icon">
+                        <i class="mdi mdi-eye btn btn-rounded btn-inverse-primary m-1"></i>
+                    </span>
+                </a>
+
+                <a href="{{ path('app_admin_film_edit', {'id': film.id}) }}">
+                    <span class="menu-icon">
+                        <i class="mdi mdi-border-color btn btn-rounded btn-inverse-warning m-1"></i>
+                    </span>
+                </a>
                 </td>
             </tr>
         {% else %}

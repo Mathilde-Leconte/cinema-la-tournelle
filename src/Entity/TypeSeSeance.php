@@ -31,9 +31,13 @@ class TypeSeSeance
     #[ORM\ManyToMany(targetEntity: Tarif::class, mappedBy: 'types')]
     private Collection $tarifs;
 
+    #[ORM\OneToMany(mappedBy: 'typeDeSeance', targetEntity: Seance::class)]
+    private Collection $seances;
+
     public function __construct()
     {
         $this->tarifs = new ArrayCollection();
+        $this->seances = new ArrayCollection();
     }
 
      // MAGIC FUNCTION
@@ -117,6 +121,36 @@ class TypeSeSeance
     {
         if ($this->tarifs->removeElement($tarif)) {
             $tarif->removeType($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Seance>
+     */
+    public function getSeances(): Collection
+    {
+        return $this->seances;
+    }
+
+    public function addSeance(Seance $seance): self
+    {
+        if (!$this->seances->contains($seance)) {
+            $this->seances->add($seance);
+            $seance->setTypeDeSeance($this);
+        }
+
+        return $this;
+    }
+
+    public function removeSeance(Seance $seance): self
+    {
+        if ($this->seances->removeElement($seance)) {
+            // set the owning side to null (unless already changed)
+            if ($seance->getTypeDeSeance() === $this) {
+                $seance->setTypeDeSeance(null);
+            }
         }
 
         return $this;

@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\FilmRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -64,6 +66,23 @@ class Film
 
     #[ORM\Column]
     private ?bool $aPartirMois = null;
+
+    #[ORM\Column]
+    private ?bool $isActive = null;
+
+    #[ORM\OneToMany(mappedBy: 'film', targetEntity: Seance::class)]
+    private Collection $seances;
+
+    public function __construct()
+    {
+        $this->seances = new ArrayCollection();
+    }
+
+    // MAGIC FONCTION
+    public function __toString()
+    {
+        return $this->titre;
+    }
 
     public function getId(): ?int
     {
@@ -270,6 +289,48 @@ class Film
     public function setAPartirMois(bool $aPartirMois): self
     {
         $this->aPartirMois = $aPartirMois;
+
+        return $this;
+    }
+
+    public function isIsActive(): ?bool
+    {
+        return $this->isActive;
+    }
+
+    public function setIsActive(bool $isActive): self
+    {
+        $this->isActive = $isActive;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Seance>
+     */
+    public function getSeances(): Collection
+    {
+        return $this->seances;
+    }
+
+    public function addSeance(Seance $seance): self
+    {
+        if (!$this->seances->contains($seance)) {
+            $this->seances->add($seance);
+            $seance->setFilm($this);
+        }
+
+        return $this;
+    }
+
+    public function removeSeance(Seance $seance): self
+    {
+        if ($this->seances->removeElement($seance)) {
+            // set the owning side to null (unless already changed)
+            if ($seance->getFilm() === $this) {
+                $seance->setFilm(null);
+            }
+        }
 
         return $this;
     }

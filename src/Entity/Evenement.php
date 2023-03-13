@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\EvenementRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -25,6 +27,20 @@ class Evenement
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $collaboration = null;
+
+    #[ORM\OneToMany(mappedBy: 'evenement', targetEntity: Seance::class)]
+    private Collection $seances;
+
+    public function __construct()
+    {
+        $this->seances = new ArrayCollection();
+    }
+
+        // MAGIC FONCTION
+        public function __toString()
+        {
+            return $this->titre;
+        }
 
     public function getId(): ?int
     {
@@ -75,6 +91,36 @@ class Evenement
     public function setCollaboration(?string $collaboration): self
     {
         $this->collaboration = $collaboration;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Seance>
+     */
+    public function getSeances(): Collection
+    {
+        return $this->seances;
+    }
+
+    public function addSeance(Seance $seance): self
+    {
+        if (!$this->seances->contains($seance)) {
+            $this->seances->add($seance);
+            $seance->setEvenement($this);
+        }
+
+        return $this;
+    }
+
+    public function removeSeance(Seance $seance): self
+    {
+        if ($this->seances->removeElement($seance)) {
+            // set the owning side to null (unless already changed)
+            if ($seance->getEvenement() === $this) {
+                $seance->setEvenement(null);
+            }
+        }
 
         return $this;
     }

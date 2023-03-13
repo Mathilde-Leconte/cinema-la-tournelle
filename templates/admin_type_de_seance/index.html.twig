@@ -23,8 +23,8 @@
             <tr>
                 {# <td>{{ type_se_seance.id }}</td> #}
                 <td>{{ type_se_seance.nom }}</td>
-                <td>{{ type_se_seance.prive ? 'Yes' : 'No' }}</td>
-                <td>{{ type_se_seance.publique ? 'Yes' : 'No' }}</td>
+                <td>{{ type_se_seance.prive ? 'Oui' : 'Non' }}</td>
+                <td>{{ type_se_seance.publique ? 'Oui' : 'Non' }}</td>
                 <td>
                     {% for tarif in type_se_seance.tarifs %}
                         {{ tarif.nom }}

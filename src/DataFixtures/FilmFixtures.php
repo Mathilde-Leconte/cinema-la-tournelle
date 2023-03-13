@@ -8,6 +8,12 @@ use Doctrine\Bundle\FixturesBundle\Fixture;
 
 class FilmFixtures extends Fixture
 {
+    public const CINQUIEME_ELEMENT  = "Le cinquieme element";
+    public const UNDERWORLD         = "Underworld";
+    public const INDIANA            = "Indiana";
+    public const GOSSES             = "Gosses";
+    public const RABBIT             = "Gosses";
+
     public function load(ObjectManager $manager,): void
     {
         $film = new Film();
@@ -28,7 +34,10 @@ class FilmFixtures extends Fixture
         $film -> setAPartir(false);
         $film -> setinterditAns(false);
         $film -> setAPartirMois(FALSE);
+        $film -> setIsActive(FALSE);
         $manager->persist($film);
+        $this->addReference(self::CINQUIEME_ELEMENT, $film);
+
 
         $film = new Film();
         $film -> setTitre("Underworld");
@@ -48,8 +57,11 @@ class FilmFixtures extends Fixture
         $film -> setAPartir(false);
         $film -> setinterditAns(true);
         $film -> setAPartirMois(false);
-
+        $film -> setIsActive(true);
         $manager->persist($film);
+        $this->addReference(self::UNDERWORLD, $film);
+
+
         
         $film = new Film();
         $film -> setTitre("INDIANA JONES ET LE ROYAUME DU CRÂNE DE CRISTAL");
@@ -69,8 +81,11 @@ class FilmFixtures extends Fixture
         $film -> setAPartir(false);
         $film -> setinterditAns(false);
         $film -> setAPartirMois(false);
-
+        $film -> setIsActive(true);
         $manager->persist($film);
+        $this->addReference(self::INDIANA, $film);
+
+
 
         $film = new Film();
         $film -> setTitre("CHÉRIE, J'AI RÉTRÉCI LES GOSSES");
@@ -90,7 +105,11 @@ class FilmFixtures extends Fixture
         $film -> setAPartir(true);
         $film -> setinterditAns(false);
         $film -> setAPartirMois(false);
+        $film -> setIsActive(FALSE);
         $manager->persist($film);
+        $this->addReference(self::GOSSES, $film);
+
+
 
         $film = new Film();
         $film -> setTitre("QUI VEUT LA PEAU DE ROGER RABBIT ?");
@@ -110,7 +129,10 @@ class FilmFixtures extends Fixture
         $film -> setAPartir(false);
         $film -> setinterditAns(false);
         $film -> setAPartirMois(false);
+        $film -> setIsActive(true);
         $manager->persist($film);
+        $this->addReference(self::RABBIT, $film);
+
 
 
 

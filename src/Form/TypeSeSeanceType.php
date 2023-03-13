@@ -22,7 +22,7 @@ class TypeSeSeanceType extends AbstractType
                 "required" => false, 
                 "row_attr" => ["class" => "form-switch"]])
             ->add('publique',  CheckboxType::class, [
-                "label" => "Actif", 
+                "label" => "publique", 
                 "required" => false, 
                 "row_attr" => ["class" => "form-switch"]])
             ->add('description',  TextType::class, ["required" => false])
