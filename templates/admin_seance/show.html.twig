@@ -20,6 +20,22 @@
                 <th>End</th>
                 <td>{{ seance.end ? seance.end|date('Y-m-d H:i:s') : '' }}</td>
             </tr>
+            <tr>
+                <th>VoSeance</th>
+                <td>{{ seance.voSeance ? 'Oui' : 'Non' }}</td>
+            </tr>
+            <tr>
+                <th>VostSeance</th>
+                <td>{{ seance.vostSeance ? 'Oui' : 'Non' }}</td>
+            </tr>
+            <tr>
+                <th>DeuxDseance</th>
+                <td>{{ seance.deuxDseance ? 'Oui' : 'Non' }}</td>
+            </tr>
+            <tr>
+                <th>TroisDSeance</th>
+                <td>{{ seance.troisDSeance ? 'Oui' : 'Non' }}</td>
+            </tr>
         </tbody>
     </table>
 

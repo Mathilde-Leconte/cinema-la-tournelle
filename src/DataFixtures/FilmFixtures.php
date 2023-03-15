@@ -12,7 +12,7 @@ class FilmFixtures extends Fixture
     public const UNDERWORLD         = "Underworld";
     public const INDIANA            = "Indiana";
     public const GOSSES             = "Gosses";
-    public const RABBIT             = "Gosses";
+    public const RABBIT             = "Rabbit";
 
     public function load(ObjectManager $manager,): void
     {

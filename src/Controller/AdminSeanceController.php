@@ -29,6 +29,7 @@ class AdminSeanceController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $seance->updateEnd();
             $seanceRepository->save($seance, true);
 
             return $this->redirectToRoute('app_admin_seance_index', [], Response::HTTP_SEE_OTHER);

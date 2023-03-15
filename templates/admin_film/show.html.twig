@@ -46,13 +46,46 @@
                 <td>{{ film.distributeur }}</td>
             </tr>
             <tr>
-                <th>CoutLocation</th>
+                <th>Cout de location</th>
                 <td>{{ film.coutLocation }}</td>
             </tr>
             <tr>
-                <th>Actif</th>
-                <td>{{ film.isActive }}</td>
+                <th>VO</th>
+                <td>{{ film.voFilm ? 'Oui' : 'Non' }}</td>
+            </tr>
+            <tr>
+                <th>VOST</th>
+                <td>{{ film.vostFilm ? 'Oui' : 'Non' }}</td>
+            </tr>
+            <tr>
+                <th>2D</th>
+                <td>{{ film.deuxDFilm ? 'Oui' : 'Non' }}</td>
+            </tr>
+            <tr>
+                <th>3D</th>
+                <td>{{ film.troisDFilm ? 'Oui' : 'Non' }}</td>
+            </tr>
+            <tr>
+                <th>Age</th>
+                <td>{{ film.age }}</td>
+            </tr>
+            <tr>
+                <th>À Partir de ... ans</th>
+                <td>{{ film.aPartir ? 'Oui' : 'Non' }}</td>
+            </tr>
+            <tr>
+                <th>Interdit au moins de ... ans</th>
+                <td>{{ film.interditAns ? 'Oui' : 'Non' }}</td>
+            </tr>
+            <tr>
+                <th>À partir de ... mois</th>
+                <td>{{ film.aPartirMois ? 'Oui' : 'Non' }}</td>
+            </tr>
+            <tr>
+                <th>Activé</th>
+                <td>{{ film.isActive ? 'Oui' : 'Non' }}</td>
             </tr>
         </tbody>
     </table>
+
 {% endblock %}

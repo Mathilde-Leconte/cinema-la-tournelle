@@ -13,7 +13,11 @@
                 <th>Film</th>
                 <th>Début de la séance</th>
                 <th>Fin de la séance</th>
-                <th>actions</th>
+                <th>Vo</th>
+                <th>Vost</th>
+                <th>2D</th>
+                <th>3D</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -23,6 +27,10 @@
                 <td>{{ seance.film.titre }}</td>
                 <td>{{ seance.start ? seance.start|date('Y-m-d H:i:s') : '' }}</td>
                 <td>{{ seance.end ? seance.end|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ seance.voSeance ? 'Oui' : 'Non' }}</td>
+                <td>{{ seance.vostSeance ? 'Oui' : 'Non' }}</td>
+                <td>{{ seance.deuxDseance ? 'Oui' : 'Non' }}</td>
+                <td>{{ seance.troisDSeance ? 'Oui' : 'Non' }}</td>
                 <td>
                     <a href="{{ path('app_admin_seance_show', {'id': seance.id}) }}">
                         <span class="menu-icon">

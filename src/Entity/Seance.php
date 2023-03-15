@@ -30,6 +30,18 @@ class Seance
     #[ORM\ManyToOne(inversedBy: 'seances')]
     private ?Evenement $evenement = null;
 
+    #[ORM\Column(nullable: true)]
+    private ?bool $voSeance = null;
+
+    #[ORM\Column(nullable: true)]
+    private ?bool $vostSeance = null;
+
+    #[ORM\Column(nullable: true)]
+    private ?bool $deuxDseance = null;
+
+    #[ORM\Column(nullable: true)]
+    private ?bool $troisDSeance = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -71,10 +83,6 @@ class Seance
     public function setFilm(?Film $film): self
     {
         $this->film = $film;
-
-        if ($this->start && $this->film && $this->film->getDuree()) {
-            $this->updateEnd();
-        }
     
         return $this;
     }
@@ -104,12 +112,64 @@ class Seance
     }
     public function updateEnd(): self
     {
+        $end = new \dateTime(); //pour que seance ne deviennent pas null
         if ($this->start !== null && $this->film !== null) {
             $end = clone $this->start;
             $end->add(new \DateInterval('PT' . $this->film->getDuree() . 'M'));
             $this->end = $end;
         }
     
+        return $this;
+    }
+
+    public function isVoSeance(): ?bool
+    {
+        return $this->voSeance;
+    }
+
+    public function setVoSeance(?bool $voSeance): self
+    {
+        $this->voSeance = $voSeance;
+
+        return $this;
+    }
+    
+
+
+
+    public function isVostSeance(): ?bool
+    {
+        return $this->vostSeance;
+    }
+
+    public function setVostSeance(?bool $vostSeance): self
+    {
+        $this->vostSeance = $vostSeance;
+
+        return $this;
+    }
+
+    public function isDeuxDseance(): ?bool
+    {
+        return $this->deuxDseance;
+    }
+
+    public function setDeuxDseance(?bool $deuxDseance): self
+    {
+        $this->deuxDseance = $deuxDseance;
+
+        return $this;
+    }
+
+    public function isTroisDSeance(): ?bool
+    {
+        return $this->troisDSeance;
+    }
+
+    public function setTroisDSeance(?bool $troisDSeance): self
+    {
+        $this->troisDSeance = $troisDSeance;
+
         return $this;
     }
 }
