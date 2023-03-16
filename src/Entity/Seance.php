@@ -8,6 +8,9 @@ use Doctrine\ORM\Mapping as ORM;
 use App\Repository\SeanceRepository;
 
 #[ORM\Entity(repositoryClass: SeanceRepository::class)]
+
+
+
 class Seance
 {
     #[ORM\Id]
@@ -31,7 +34,7 @@ class Seance
     private ?Evenement $evenement = null;
 
     #[ORM\Column(nullable: true)]
-    private ?bool $voSeance = null;
+    private ?bool $voSeance = false;
 
     #[ORM\Column(nullable: true)]
     private ?bool $vostSeance = null;

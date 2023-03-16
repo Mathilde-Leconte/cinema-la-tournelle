@@ -6,8 +6,10 @@ use App\Entity\Seance;
 use DateTime;
 use Doctrine\Persistence\ObjectManager;
 use Doctrine\Bundle\FixturesBundle\Fixture;
+use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 
-class SeanceFixtures extends Fixture
+
+class SeanceFixtures extends Fixture implements DependentFixtureInterface
 {
     public function load(ObjectManager $manager): void
     {
@@ -19,8 +21,8 @@ class SeanceFixtures extends Fixture
         $seance -> setVostSeance(true);
         $seance -> setDeuxDseance(true);
         $seance -> setTroisDseance(true);
-        // $seance -> setTypeDeSeance();
-        // $seance -> setEvenement();
+        $seance -> setTypeDeSeance($this->getReference(TypeFixtures::TETINE));
+        $seance -> setEvenement($this->getReference(EvenementFixtures::GOUTER));
         $manager->persist($seance);
         
         $seance = new Seance();
@@ -31,8 +33,8 @@ class SeanceFixtures extends Fixture
         $seance -> setVostSeance(false);
         $seance -> setDeuxDseance(true);
         $seance -> setTroisDseance(false);
-        // $seance -> setTypeDeSeance();
-        // $seance -> setEvenement();
+        $seance -> setTypeDeSeance($this->getReference(TypeFixtures::B));
+        $seance -> setEvenement($this->getReference(EvenementFixtures::FEMME));
         $manager->persist($seance);
 
         $seance = new Seance();
@@ -43,8 +45,8 @@ class SeanceFixtures extends Fixture
         $seance -> setVostSeance(true);
         $seance -> setDeuxDseance(false);
         $seance -> setTroisDseance(true);
-        // $seance -> setTypeDeSeance();
-        // $seance -> setEvenement();
+        $seance -> setTypeDeSeance($this->getReference(TypeFixtures::PEUR));
+        $seance -> setEvenement($this->getReference(EvenementFixtures::GOUTER));
         $manager->persist($seance);
 
         $seance = new Seance();
@@ -55,10 +57,17 @@ class SeanceFixtures extends Fixture
         $seance -> setVostSeance(false);
         $seance -> setDeuxDseance(false);
         $seance -> setTroisDseance(true);
-        // $seance -> setTypeDeSeance();
-        // $seance -> setEvenement();
+        $seance -> setTypeDeSeance($this->getReference(TypeFixtures::TETINE));
+        $seance -> setEvenement($this->getReference(EvenementFixtures::FEMME));
         $manager->persist($seance);
 
         $manager->flush();
+    }
+
+    public function getDependencies()
+    {
+        return [
+            TypeFixtures::class,
+        ];
     }
 }

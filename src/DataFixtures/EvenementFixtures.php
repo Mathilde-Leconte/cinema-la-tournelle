@@ -8,6 +8,9 @@ use Doctrine\Persistence\ObjectManager;
 
 class EvenementFixtures extends Fixture
 {
+    public const GOUTER = "Ciné gouter";
+    public const FEMME = "Journée droit des femmes";
+
     public function load(ObjectManager $manager): void
     {
         $evenement = new Evenement();
@@ -16,6 +19,8 @@ class EvenementFixtures extends Fixture
         $evenement -> setDuree(180);
         // $evenement -> setCollaboration("");
         $manager->persist($evenement);
+        $this->addReference(self::GOUTER, $evenement);
+
 
         $evenement = new Evenement();
         $evenement -> setTitre("JOURNÉE DES DROITS DES FEMMES");
@@ -23,6 +28,8 @@ class EvenementFixtures extends Fixture
         $evenement -> setDuree(270);
         // $evenement -> setCollaboration("");
         $manager->persist($evenement);
+        $this->addReference(self::FEMME, $evenement);
+
 
         $manager->flush();
     }
