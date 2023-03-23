@@ -28,12 +28,14 @@ class AdminSeanceController extends AbstractController
         $form = $this->createForm(SeanceType::class, $seance);
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $seance->updateEnd();
-            $seanceRepository->save($seance, true);
+        // if ($form->isSubmitted() && $form->isValid()) {
+        //     $seance->updateEnd();
+        //     $seanceRepository->save($seance, true);
+            
 
-            return $this->redirectToRoute('app_admin_seance_index', [], Response::HTTP_SEE_OTHER);
-        }
+        // // Redirect to the calendar page
+        // return $this->redirectToRoute('app_calendar_index');
+        // }
 
         return $this->renderForm('admin_seance/new.html.twig', [
             'seance' => $seance,
@@ -70,10 +72,30 @@ class AdminSeanceController extends AbstractController
     #[Route('/{id}', name: 'app_admin_seance_delete', methods: ['POST'])]
     public function delete(Request $request, Seance $seance, SeanceRepository $seanceRepository): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$seance->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $seance->getId(), $request->request->get('_token'))) {
             $seanceRepository->remove($seance, true);
         }
 
         return $this->redirectToRoute('app_admin_seance_index', [], Response::HTTP_SEE_OTHER);
+    }
+
+    #[Route('/add-from-calendar', name: 'app_admin_seance_add_from_calendar', methods: ['GET', 'POST'])]
+    public function addFromCalendar(Request $request, SeanceRepository $seanceRepository): Response
+    {
+        $seance = new Seance();
+        $form = $this->createForm(SeanceType::class, $seance);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $seance->updateEnd();
+            $seanceRepository->save($seance, true);
+
+            return $this->redirectToRoute('app_admin_programmation', [], Response::HTTP_SEE_OTHER);
+        }
+
+        return $this->render('admin_seance/_form.html.twig', [
+            'seance' => $seance,
+            'form' => $form->createView(),
+        ]);
     }
 }

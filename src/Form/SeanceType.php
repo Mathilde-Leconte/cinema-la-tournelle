@@ -28,7 +28,12 @@ class SeanceType extends AbstractType
                     },
                     'choice_label' => 'titre',
                     'required'     => true,
-                    'placeholder'  => 'Choisir un film'
+                    'placeholder'  => 'Choisir un film',
+                    // Add event listener to film dropdown
+                    'attr'         => [
+                        'class' => 'film-dropdown',
+                        'onchange' => 'showSeanceCheckboxes()'
+                    ]
                     ])
     
             ->add('start', DateTimeType::class, [
@@ -44,22 +49,28 @@ class SeanceType extends AbstractType
     
             ->add('voSeance', CheckboxType::class,[
                 "label" => "VO", 
-                "required" => false
+                "required" => false,
+                "attr"     => ["class" => "seance-checkbox vo-checkbox"]
                 ])
+
 
             ->add('vostSeance', CheckboxType::class,[
                 "label" => "VOST", 
-                "required" => false
+                "required" => false,
+                "attr"     => ["class" => "seance-checkbox vost-checkbox"]
                 ])
+
 
             ->add('deuxDseance', CheckboxType::class,[
                 "label" => "2D", 
-                "required" => false
+                "required" => false,
+                "attr"     => ["class" => "seance-checkbox deux-d-checkbox"]
                 ])
 
             ->add('troisDSeance', CheckboxType::class,[
                 "label" => "3D", 
-                "required" => false
+                "required" => false,
+                "attr"     => ["class" => "seance-checkbox trois-d-checkbox"]
                 ])
 
             ->add('typeDeSeance', EntityType::class, [

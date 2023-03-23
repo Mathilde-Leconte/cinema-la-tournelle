@@ -1,11 +1,14 @@
 {% extends 'base.back.html.twig' %}
 
-{% block title %}Nouvelle séance{% endblock %}
+{% block title %}Nouvelle séance
+{% endblock %}
 
 {% block body %}
-    <a href="{{ path('app_admin_seance_index') }}" class="btn btn-inverse-secondary mb-3">Voir la liste</a>
-    <h1>Ajouter une séance</h1>
+	<a href="{{ path('app_admin_seance_index') }}" class="btn btn-inverse-secondary mb-3">Voir la liste</a>
+	<h1>Ajouter une séance</h1>
 
-    {{ include('admin_seance/_form.html.twig') }}
+	{{ include('admin_seance/_form.html.twig') }}
+
+
 
 {% endblock %}

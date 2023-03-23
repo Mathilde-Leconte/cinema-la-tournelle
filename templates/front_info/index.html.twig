@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello FrontInfoController!
+{% endblock %}
+
+{% block body %}
+	<!--####################################################################-->
+	<!--###########################PRESENTATION###########################-->
+	<!--####################################################################-->
+	{% for contenu in contenus %}
+		{% if contenu.emplacement == "espace1" and contenu.isActive %}
+			<div class="presentation-image">
+				<img src="{{ asset('image/' ~ contenu.image) }}" alt="">
+			</div>
+			<div class="informations-tarifs">
+				<h1>{{ contenu.titre }}</h1>
+				<section class="presentation">
+					<p>{{ contenu.texte }}</p>
+				</section>
+			{% endif %}
+			<div>
+				{% if contenu.emplacement == "espace2" and contenu.isActive %}
+                    <h2>{{ contenu.titre }}</h2>
+					{% for tarif in tarifs %}
+						<h3 class="tarif-nom">{{ tarif.nom }}</h3>
+						<p class="tarif-prix">{{ tarif.prix }}</p>
+						<p class="tarif-description">{{ tarif.description }}</p>
+					{% endfor %}
+				{% endif %}
+					{% if contenu.emplacement == "espace3" and contenu.isActive %}
+						<h2>{{ contenu.titre }}</h2>
+						<p>{{ contenu.texte }}</p>
+					{% endif %}
+					{% if contenu.emplacement == "espace4" and contenu.isActive %}
+						<h2>{{ contenu.titre }}</h2>
+						<p>{{ contenu.texte }}</p>
+				    {% endif %}
+			</div>
+
+			{% if contenu.emplacement == "espace5" and contenu.isActive %}
+				<div class="evenement espace5">
+					<div class="evenement-image">
+						<img src="{{ asset('image/' ~ contenu.image) }}" alt="">
+					</div>
+					<div class="evenement-texte">
+						<h2>{{ contenu.titre }}</h2>
+						<p>{{ contenu.texte }}</p>
+					</div>
+				</div>
+			{% endif %}
+		{% endfor %}
+	</div>
+{% endblock %}

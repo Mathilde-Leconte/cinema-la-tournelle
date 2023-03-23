@@ -45,10 +45,34 @@ class SeanceRepository extends ServiceEntityRepository
 public function findAllWithSeance()
 {
     return $this->createQueryBuilder('s')
+        ->leftJoin('s.typeDeSeance', 't')
         ->leftJoin('t.film', 'f')
         ->select('f.titre')
         ->getQuery()
         ->getResult();
+}
+
+public function findByDateRange(\DateTimeInterface $start, \DateTimeInterface $end): array
+{
+    return $this->createQueryBuilder('s')
+        ->where('s.start >= :start')
+        ->andWhere('s.end <= :end')
+        ->setParameter('start', $start)
+        ->setParameter('end', $end)
+        ->getQuery()
+        ->getResult();
+}
+
+public function findNextEvent(\DateTime $now): ?Seance
+{
+    $qb = $this->createQueryBuilder('s')
+        ->where('s.start > :now')
+        ->orderBy('s.start', 'ASC')
+        ->setMaxResults(1)
+        ->setParameter('now', $now)
+        ->getQuery();
+
+    return $qb->getOneOrNullResult();
 }
 
 //    public function findOneBySomeField($value): ?Seance

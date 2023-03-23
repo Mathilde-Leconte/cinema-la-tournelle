@@ -1,4 +1,16 @@
 {{ form_start(form) }}
     {{ form_widget(form) }}
     <button class="btn btn-inverse-success p-3">{{ button_label|default('Enregistrer') }}</button>
+
+    <!--FORMULAIRE SEANCE-->
+    <script src="{{ asset('js/script-seance-checkboxes.js') }}"></script>
+
+    <!-- FULL CALENDAR -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+    <script src="{{ asset('js/full-calendar/core/index.global.js') }}"></script>
+    <script src="{{ asset('js/full-calendar/daygrid/index.global.js') }}"></script>
+    <script src="{{ asset('js/full-calendar/interaction/index.global.js') }}"></script>
+    <script src="{{ asset('js/full-calendar/list/index.global.js') }}"></script>
+    <script src="{{ asset('js/full-calendar/timegrid/index.global.js') }}"></script>
+    <script src="{{ asset('js/full-calendar/script-calendrier.js') }}"></script>
 {{ form_end(form) }}

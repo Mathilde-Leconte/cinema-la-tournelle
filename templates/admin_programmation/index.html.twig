@@ -1,19 +1,33 @@
 {% extends 'base.back.html.twig' %}
 
-{% block title %}FULL CALENDAR{% endblock %}
+{% block title %}FULL CALENDAR
+{% endblock %}
 
 {% block body %}
-<div class="programmation">
+	<div class="programmation">
+		<button type="button" class="btn btn-primary mb-3" data-toggle="modal" data-target="#addSessionModal">Ajouter une séance</button>
 
-    <div id="external-events">
-        <div class="fc-event">Event 1</div>
-        <div class="fc-event">Event 2</div>
-        <div class="fc-event">Event 3</div>
-    </div>
 
-    <div id="calendrier">
+		<div id="external-events"></div>
 
-    </div>
+		<div id="calendrier"></div>
 
-</div>
+	</div>
+
+	<!-- Add session modal -->
+	<div class="modal fade" id="addSessionModal" tabindex="-1" aria-labelledby="addSessionModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="addSessionModalLabel">Ajouter une séance</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					{{ render(controller('App\\Controller\\AdminSeanceController:addFromCalendar')) }}
+				</div>
+			</div>
+		</div>
+	</div>
 {% endblock %}

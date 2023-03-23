@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\TarifRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: TarifRepository::class)]
@@ -23,6 +24,12 @@ class Tarif
 
     #[ORM\ManyToMany(targetEntity: TypeSeSeance::class, inversedBy: 'tarifs')]
     private Collection $types;
+
+    #[ORM\ManyToOne(inversedBy: 'tarifs')]
+    private ?InformationPage $informationPage = null;
+
+    #[ORM\Column(type: Types::TEXT, nullable: true)]
+    private ?string $description = null;
 
     public function __construct()
     {
@@ -84,6 +91,30 @@ class Tarif
     public function removeType(TypeSeSeance $type): self
     {
         $this->types->removeElement($type);
+
+        return $this;
+    }
+
+    public function getInformationPage(): ?InformationPage
+    {
+        return $this->informationPage;
+    }
+
+    public function setInformationPage(?InformationPage $informationPage): self
+    {
+        $this->informationPage = $informationPage;
+
+        return $this;
+    }
+
+    public function getDescription(): ?string
+    {
+        return $this->description;
+    }
+
+    public function setDescription(?string $description): self
+    {
+        $this->description = $description;
 
         return $this;
     }

@@ -34,7 +34,7 @@ class Seance
     private ?Evenement $evenement = null;
 
     #[ORM\Column(nullable: true)]
-    private ?bool $voSeance = false;
+    private ?bool $voSeance = null;
 
     #[ORM\Column(nullable: true)]
     private ?bool $vostSeance = null;

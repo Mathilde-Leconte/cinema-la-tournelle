@@ -11,6 +11,7 @@
     {#------------------------CSS-----------------------#}
     <link rel="stylesheet" href="{{ asset('css/style-base-front-home.min.css') }}">
 	<link rel="stylesheet" href="{{ asset('css/style-front-home.min.css') }}">
+	<link rel="stylesheet" href="{{ asset('css/style-info.min.css') }}">
 
 
     {#------------------CDN BOOTSTRAP--------------------#}
@@ -39,19 +40,19 @@
         		<div class="collapse navbar-collapse" id="navbarSupportedContent">
         			<ul class="navbar-nav me-auto mb-2 mb-lg-0">
         				<li class="nav-item">
-        					<a class="nav-link active" aria-current="page" href="#">Films</a>
+        					<a class="nav-link active" aria-current="page" href="{{ path('app_front') }}">Films</a>
         				</li>
         				<li class="nav-item">
         					<a class="nav-link" href="#">Programmation</a>
         				</li>
         				<li class="nav-item">
-        					<a class="nav-link" href="#">Informations et tarifs</a>
+                            <a class="nav-link" href="{{ path('app_front_info') }}">Informations et Tarifs</a>
         				</li>
         			</ul>
         			<div>
-        				<a class="p-2" href=""><img src="{{ asset('image/icon/facebook.svg') }}" alt=""></i></a>
-        			    <a class="p-2 pe-5" href=""><img src="{{ asset('image/icon/instagram.svg') }}"alt=""></a>
-        			    <a class="p-3" href=""><img src="{{ asset('image/icon/user.svg') }}" alt=""></a>
+        				<a class="p-2" href="{{ path('app_front_logging')}}"><img src="{{ asset('image/icons/facebook.svg') }}" alt=""></a>
+        			    <a class="p-2 pe-5" href=""><img src="{{ asset('image/icons/instagram.svg') }}"alt=""></a>
+        			    <a class="p-3" href="{{ path('app_front_logging')}}"><img src="{{ asset('image/icons/user.svg') }}" alt=""></a>
         		    </div>
         	    </div>
             </div>
@@ -63,7 +64,7 @@
     </main>
 
     {#------------------------------------------------#}
-    {#---------------------FOOTER---------------------#}ƒ
+    {#---------------------FOOTER---------------------#}
     {#------------------------------------------------#}
     <footer class="max-vh-2 bg-dark text-white text-center text-lg-start">
     	<div class="container p-4">

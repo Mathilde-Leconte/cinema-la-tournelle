@@ -9,7 +9,7 @@
     <table class="table">
         <thead>
             <tr>
-                {# <th>Id</th> #}
+                <th>Id</th>
                 <th>Film</th>
                 <th>Début de la séance</th>
                 <th>Fin de la séance</th>
@@ -23,14 +23,14 @@
         <tbody>
         {% for seance in seances %}
             <tr>
-                {# <td>{{ seance.id }}</td> #}
+                <td>{{ seance.id }}</td>
                 <td>{{ seance.film.titre }}</td>
                 <td>{{ seance.start ? seance.start|date('Y-m-d H:i:s') : '' }}</td>
                 <td>{{ seance.end ? seance.end|date('Y-m-d H:i:s') : '' }}</td>
-                <td>{{ seance.voSeance ? 'Oui' : 'Non' }}</td>
-                <td>{{ seance.vostSeance ? 'Oui' : 'Non' }}</td>
-                <td>{{ seance.deuxDseance ? 'Oui' : 'Non' }}</td>
-                <td>{{ seance.troisDSeance ? 'Oui' : 'Non' }}</td>
+                <td>{{ seance.voSeance ? 'VO' : '/' }}</td>
+                <td>{{ seance.vostSeance ? 'VOST' : '/' }}</td>
+                <td>{{ seance.deuxDseance ? '2D' : '/' }}</td>
+                <td>{{ seance.troisDSeance ? '3D' : '/' }}</td>
                 <td>
                     <a href="{{ path('app_admin_seance_show', {'id': seance.id}) }}">
                         <span class="menu-icon">
