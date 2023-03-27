@@ -1,0 +1,42 @@
+{% extends 'base.back.html.twig' %}
+
+{% block title %}Seance{% endblock %}
+
+{% block body %}
+    <a href="{{ path('app_admin_seance_index') }}" class="btn btn-inverse-secondary mb-3">Voir la liste</a>
+    <h1>Séance</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ seance.id }}</td>
+            </tr>
+            <tr>
+                <th>Start</th>
+                <td>{{ seance.start ? seance.start|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>End</th>
+                <td>{{ seance.end ? seance.end|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            {# <tr>
+                <th>VoSeance</th>
+                <td>{{ seance.voSeance ? 'Oui' : 'Non' }}</td>
+            </tr>
+            <tr>
+                <th>VostSeance</th>
+                <td>{{ seance.vostSeance ? 'Oui' : 'Non' }}</td>
+            </tr>
+            <tr>
+                <th>DeuxDseance</th>
+                <td>{{ seance.deuxDseance ? 'Oui' : 'Non' }}</td>
+            </tr>
+            <tr>
+                <th>TroisDSeance</th>
+                <td>{{ seance.troisDSeance ? 'Oui' : 'Non' }}</td>
+            </tr> #}
+        </tbody>
+    </table>
+
+{% endblock %}

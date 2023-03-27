@@ -1,0 +1,55 @@
+{% extends 'base.back.html.twig' %}
+
+{% block title %}Seance index{% endblock %}
+
+{% block body %}
+    <h1>Les Seances</h1>
+    <a href="{{ path('app_admin_seance_new') }}" class="btn btn-inverse-success p-2 mb-2">Nouveau</a>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Film</th>
+                <th>Début de la séance</th>
+                <th>Fin de la séance</th>
+                <th>Vo</th>
+                <th>Vost</th>
+                <th>2D</th>
+                <th>3D</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for seance in seances %}
+            <tr>
+                <td>{{ seance.id }}</td>
+                <td>{{ seance.film.titre }}</td>
+                <td>{{ seance.start ? seance.start|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ seance.end ? seance.end|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ seance.voSeance ? 'VO' : '/' }}</td>
+                <td>{{ seance.vostSeance ? 'VOST' : '/' }}</td>
+                <td>{{ seance.deuxDseance ? '2D' : '/' }}</td>
+                <td>{{ seance.troisDSeance ? '3D' : '/' }}</td>
+                <td>
+                    <a href="{{ path('app_admin_seance_show', {'id': seance.id}) }}">
+                        <span class="menu-icon">
+                            <i class="mdi mdi-eye btn btn-rounded btn-inverse-primary m-1"></i>
+                        </span>
+                    </a>
+                    <a href="{{ path('app_admin_seance_edit', {'id': seance.id}) }}">
+                        <span class="menu-icon">
+                            <i class="mdi mdi-border-color btn btn-rounded btn-inverse-warning m-1"></i>
+                        </span>
+                    </a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">Aucunes séance trouvée</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

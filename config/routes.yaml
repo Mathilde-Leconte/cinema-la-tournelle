@@ -1,0 +1,6 @@
+# routes.yaml
+
+app_generate_word_document:
+    path: /generate-word-document
+    methods: [POST]
+    controller: App\Controller\MyController::generateWordDocument

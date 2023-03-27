@@ -1,0 +1,33 @@
+{% extends 'base.back.html.twig' %}
+
+{% block title %}Evenement{% endblock %}
+
+{% block body %}
+    <a href="{{ path('app_admin_evenement_index') }}" class="btn btn-inverse-secondary mb-3">Voir la liste</a>
+    <h1>Évenement</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ evenement.id }}</td>
+            </tr>
+            <tr>
+                <th>Titre</th>
+                <td>{{ evenement.titre }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ evenement.description }}</td>
+            </tr>
+            <tr>
+                <th>Duree</th>
+                <td>{{ evenement.duree }}</td>
+            </tr>
+            <tr>
+                <th>Collaboration</th>
+                <td>{{ evenement.collaboration }}</td>
+            </tr>
+        </tbody>
+    </table>
+{% endblock %}

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        {% block title %}La Tournelle{% endblock %}
+    </title>
+
+    {#------------------------CSS-----------------------#}
+    <link rel="stylesheet" href="{{ asset('css/style-base-front-home.min.css') }}">
+	<link rel="stylesheet" href="{{ asset('css/style-front-home.min.css') }}">
+	<link rel="stylesheet" href="{{ asset('css/style-info.min.css') }}">
+
+
+    {#------------------CDN BOOTSTRAP--------------------#}
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
+    {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
+
+    {% block stylesheets %}
+    {% endblock %}
+</head>
+
+<body>
+
+
+    <header>
+        {#------------------------------------------------#}
+        {#---------------------NAVBAR---------------------#}
+        {#------------------------------------------------#}
+        <nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
+        	<div class="navbar container-fluid">
+        		<a class="navbar-brand p-3" href="#">Navbar</a>
+        		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        			<span class="navbar-toggler-icon"></span>
+        		</button>
+        		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+        			<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        				<li class="nav-item">
+        					<a class="nav-link active" aria-current="page" href="{{ path('app_front') }}">Films</a>
+        				</li>
+        				<li class="nav-item">
+        					<a class="nav-link" href="#">Programmation</a>
+        				</li>
+        				<li class="nav-item">
+                            <a class="nav-link" href="{{ path('app_front_info') }}">Informations et Tarifs</a>
+        				</li>
+        			</ul>
+        			<div>
+        				<a class="p-2" href="{{ path('app_front_logging')}}"><img src="{{ asset('image/icons/facebook.svg') }}" alt=""></a>
+        			    <a class="p-2 pe-5" href=""><img src="{{ asset('image/icons/instagram.svg') }}"alt=""></a>
+        			    <a class="p-3" href="{{ path('app_front_logging')}}"><img src="{{ asset('image/icons/user.svg') }}" alt=""></a>
+        		    </div>
+        	    </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="cont">
+        {% block body %}{% endblock %}
+    </main>
+
+    {#------------------------------------------------#}
+    {#---------------------FOOTER---------------------#}
+    {#------------------------------------------------#}
+    <footer class="max-vh-2 bg-dark text-white text-center text-lg-start">
+    	<div class="container p-4">
+    		
+			{# Le footer est en 4 colonnes, avec un système de <grid> #}
+			<div class="row">
+                  
+    			<div class="adresse col-lg-3 col-md-6 mb-4 mb-md-0">
+    				<h5 class="text-uppercase mb-3">Adresse</h5>
+    				<p>Lorem ipsum dolor sit amet.</p>
+    				<p>Lorem ipsum dolor sit amet.</p>
+    				<p>Lorem ipsum dolor sit amet.</p>
+    			</div>
+    
+    			<div class="contact col-lg-3 col-md-6 mb-4 mb-md-0 ">
+    				<h5 class="text-uppercase mb-3">Contacts</h5>
+    				<div class="d-flex">
+    					<p class="pe-2">Téléphone:</p>
+    					<a href="tel:0180808080" class="text-white">0180808080</a>
+    				</div>
+    				<div class="telephone d-flex ">
+    					<p class="pe-2">Téléphone:</p>
+    					<a href="tel:0180808080" class="text-white">0180808080</a>
+    				</div>
+    			</div>
+    
+    			<div class="reseaux col-lg-2 col-md-6 mb-4 mb-md-0">
+    				<h5 class="text-uppercase mb-3">réseaux</h5>
+    				<ul class="list-unstyled d-flex">
+    					<li>
+    						<a href="#!" class="text-white p-2"><img src="{{ asset('image/icon/facebook.svg') }}" alt=""></a>
+    					</li>
+    					<li>
+    						<a href="#!" class="text-white p-2"><img src="{{ asset('image/icon/instagram.svg') }}" alt=""></a>
+    					</li>
+    				</ul>
+    			</div>
+    
+    			<div class="img-footer col-lg-4 col-md-6 mb-4 mb-md-0">
+    				<img src="../image/image-footer-latournelle.jpeg" alt="">
+    			</div>
+    
+    		</div>
+    	</div>
+    	<!-- Copyright JS -->
+    	<div class="copyright text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+    		© 2020 Copyright:
+    		<a class="text-white" href="https://mdbootstrap.com/">MDBootstrap.com</a>
+    	</div>
+    	<!-- Copyright -->
+    </footer>
+
+
+    {#--------------------JS CDN BOOTSTRAP----------------------#}
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+    
+    {#--------------------JS----------------------#}
+    <script src="{{ asset('js/script-base-front-home.js') }}"></script>
+    <script src="{{ asset('js/script-front-home.js') }}"></script>
+
+    {% block javascripts %}{% endblock %}
+    
+</body>
+</html>

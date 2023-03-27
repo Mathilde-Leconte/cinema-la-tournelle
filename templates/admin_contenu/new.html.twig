@@ -1,0 +1,11 @@
+{% extends 'base.back.html.twig' %}
+
+{% block title %}Nouveau contenu{% endblock %}
+
+{% block body %}
+    <a href="{{ path('app_admin_contenu_index') }}" class="btn btn-inverse-secondary mb-3">Voir la liste</a>
+    <h1>Créer un nouveu contenu</h1>
+
+    {{ include('admin_contenu/_form.html.twig') }}
+
+{% endblock %}
