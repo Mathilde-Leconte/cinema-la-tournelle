@@ -1,0 +1,11 @@
+{% extends 'base.back.html.twig' %}
+
+{% block title %}Nouvel utlisateur {% endblock %}
+
+{% block body %}
+    <a href="{{ path('app_user_index') }}" class="btn btn-inverse-secondary mb-3">Voir la liste</a>
+    <h1>Ajouter un utilisateur</h1>
+
+    {{ include('user/_form.html.twig') }}
+
+{% endblock %}

@@ -1,0 +1,11 @@
+{% extends 'base.back.html.twig' %}
+
+{% block title %}Nouveau tarif{% endblock %}
+
+{% block body %}
+    <a href="{{ path('app_admin_tarif_index') }}" class="btn btn-inverse-secondary mb-3">Voir la liste</a>
+    <h1>Ajouter un tarif</h1>
+
+    {{ include('admin_tarif/_form.html.twig') }}
+
+{% endblock %}

@@ -1,0 +1,66 @@
+{% extends 'base.back.html.twig' %}
+
+{% block title %}Coordonnées{% endblock %}
+
+{% block body %}
+    <a href="{{ path('app_admin_info_index') }}" class="btn btn-inverse-secondary mb-3">Voir la liste</a>
+    <h1>Coordonnées</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ info.id }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ info.nom }}</td>
+            </tr>
+            <tr>
+                <th>TelProgrammation</th>
+                <td>{{ info.telProgrammation }}</td>
+            </tr>
+            <tr>
+                <th>TelAdmin</th>
+                <td>{{ info.telAdmin }}</td>
+            </tr>
+            <tr>
+                <th>Instagram</th>
+                <td>{{ info.instagram }}</td>
+            </tr>
+            <tr>
+                <th>Facebook</th>
+                <td>{{ info.facebook }}</td>
+            </tr>
+            <tr>
+                <th>Site</th>
+                <td>{{ info.site }}</td>
+            </tr>
+            <tr>
+                <th>Numero</th>
+                <td>{{ info.numero }}</td>
+            </tr>
+            <tr>
+                <th>Rue</th>
+                <td>{{ info.rue }}</td>
+            </tr>
+            <tr>
+                <th>CodePostale</th>
+                <td>{{ info.codePostale }}</td>
+            </tr>
+            <tr>
+                <th>Ville</th>
+                <td>{{ info.ville }}</td>
+            </tr>
+            <tr>
+                <th>Acces</th>
+                <td>{{ info.acces }}</td>
+            </tr>
+            <tr>
+                <th>Horraire</th>
+                <td>{{ info.horraire }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+{% endblock %}

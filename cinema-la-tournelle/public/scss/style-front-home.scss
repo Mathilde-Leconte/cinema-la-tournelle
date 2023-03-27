@@ -1,0 +1,125 @@
+*{
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+
+}
+body{
+    background-color: #f1f1f1f1;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+
+    main{
+        margin: 4vw;
+        display: flex;
+        .films-a-affiche{
+            width: 60vw;
+            .cette-semaine{
+                margin-top: 2vw;
+                .cards{
+                    display: flex;
+                    justify-content: space-between;
+                    flex-wrap: wrap;
+                    .card{
+                        position: relative;
+                        width: 150px;
+                        height: 210px;
+                        margin-bottom: 20px;
+                        .card-img-top{
+                            width: 100%;
+                            height: 100%;
+                        }
+                        .card-body{
+                            .btn-card{
+                                position: absolute;
+                                bottom: 0;
+                                margin-bottom: 10px;
+                            }
+                        }
+                    }
+                }
+            }      
+        }
+        .prochaine-seance-evenement{
+            margin-top: 10vw;
+            margin-left: 3vw;
+            .prochaine-seance{
+                border: solid;
+                border-color: black;
+                border-width: 2px;
+                margin-bottom: 20vw;
+                padding: 20px;
+                .prochaine{
+                    .prochaine-seance-film{
+                        display: flex;
+                        justify-content: space-between;
+                    }
+                }
+            }
+            .evenement{
+                border: solid;
+                border-color: black;
+                border-width: 2px;
+                margin-bottom: 20vw;
+                padding: 20px;
+            }
+        }
+    }
+    
+ 
+    @media (max-width: 600px) {
+
+        main{
+            margin: 5vw;
+            display: flex;
+            flex-direction: column;
+            .films-a-affiche{
+                width: 90vw;
+                justify-content: center;
+                .cette-semaine{
+                    margin-top: 2vw;
+                    .cards{
+                        .card{
+                            position: relative;
+                            width: 150px;
+                            height: 210px;
+                            margin-bottom: 20px;
+                            .card-img-top{
+                                width: 100%;
+                                height: 100%;
+                            }
+                            .card-body{
+                                .btn-card{
+                                    position: absolute;
+                                    bottom: 0;
+                                    margin-bottom: 10px;
+                                }
+                            }
+                        }
+                    }
+                }      
+            }
+            .prochaine-seance-evenement{
+                margin-top: 10vw;
+                // margin-left: 3vw;
+                .prochaine-seance{
+                    border: solid;
+                    border-color: black;
+                    border-width: 2px;
+                    margin-bottom: 5vw;
+                    padding: 20px;
+                    .prochaine{
+                        .prochaine-seance-film{
+                            display: flex;
+                            justify-content: space-between;
+                        }
+                    }
+                }
+                .evenement{
+                    border: solid;
+                    border-color: black;
+                    border-width: 2px;
+                    margin-bottom: 5vw;
+                }
+            }
+        }
+        }

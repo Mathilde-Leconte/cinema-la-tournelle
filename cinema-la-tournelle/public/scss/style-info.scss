@@ -1,0 +1,56 @@
+.presentation-image{
+    width: 100%;
+    position: absolute;
+    top: 0;
+    z-index: -1;
+    img{
+        width: 100%;
+        filter: blur(1px);
+        }
+}
+.informations-tarifs{
+    margin: 3vw;
+    position: relative;
+    h1{
+        text-align: center;
+        color: white;
+        margin-top: 20vw;
+        font-size: 5vw;
+    }
+    .presentation p{
+        text-align: center;
+        color: white;
+        margin-top: 20vw;
+        margin-inline: 10vw;
+        font-size: 1.5vw;
+    }
+}
+.tarifs-enfants{
+    display: flex;
+}
+
+.evenement{
+    display: flex;
+    justify-content: space-between;
+    border: solid;
+    box-sizing: 2px;
+    border-color: black;
+    padding: 2vw;
+    .evenement-image{
+        width: 250%;
+        img{
+            width: 100%;
+        }
+    }
+    .evenement-texte{
+        font-size: 1.3vw;
+        padding: 8vw;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+}
+
+
+
+

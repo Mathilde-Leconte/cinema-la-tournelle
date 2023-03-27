@@ -1,0 +1,65 @@
+{% extends 'base.back.html.twig' %}
+
+{% block title %}Info index{% endblock %}
+
+{% block body %}
+    <h1>Les Coordonnées</h1>
+    {# <a href="{{ path('app_admin_info_new') }}" class="btn btn-inverse-success p-2 mb-2">Nouveau</a> #}
+
+    <table class="table">
+        <thead>
+            <tr>
+                {# <th>Id</th> #}
+                <th>Nom</th>
+                {# <th>TelProgrammation</th> #}
+                {# <th>TelAdmin</th> #}
+                {# <th>Instagram</th> #}
+                {# <th>Facebook</th> #}
+                {# <th>Site</th> #}
+                {# <th>Numero</th> #}
+                {# <th>Rue</th> #}
+                {# <th>CodePostale</th> #}
+                {# <th>Ville</th> #}
+                {# <th>Acces</th> #}
+                {# <th>Horraire</th> #}
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for info in infos %}
+            <tr>
+                {# <td>{{ info.id }}</td> #}
+                <td>{{ info.nom }}</td>
+                {# <td>{{ info.telProgrammation }}</td> #}
+                {# <td>{{ info.telAdmin }}</td> #}
+                {# <td>{{ info.instagram }}</td> #}
+                {# <td>{{ info.facebook }}</td> #}
+                {# <td>{{ info.site }}</td> #}
+                {# <td>{{ info.numero }}</td> #}
+                {# <td>{{ info.rue }}</td> #}
+                {# <td>{{ info.codePostale }}</td> #}
+                {# <td>{{ info.ville }}</td> #}
+                {# <td>{{ info.acces }}</td> #}
+                {# <td>{{ info.horraire }}</td> #}
+                <td>
+                    <a href="{{ path('app_admin_info_show', {'id': info.id}) }}">								
+                        <span class="menu-icon">
+                            <i class="mdi mdi-eye btn btn-rounded btn-inverse-primary m-1"></i>
+                        </span>
+                        </a>
+                    <a href="{{ path('app_admin_info_edit', {'id': info.id}) }}">							
+                        <span class="menu-icon">
+								<i class="mdi mdi-border-color btn btn-rounded btn-inverse-warning m-1"></i>
+						</span>
+                    </a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="14">Aucune coordonées trouvé</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

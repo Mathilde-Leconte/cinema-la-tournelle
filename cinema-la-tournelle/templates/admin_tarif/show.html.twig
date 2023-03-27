@@ -1,0 +1,27 @@
+{% extends 'base.back.html.twig' %}
+
+{% block title %}Tarif{% endblock %}
+
+{% block body %}
+    <a href="{{ path('app_admin_tarif_index') }}" class="btn btn-inverse-secondary mb-3">Voir la liste</a>
+    <h1>Tarif</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ tarif.id }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ tarif.nom }}</td>
+            </tr>
+            <tr>
+                <th>Prix</th>
+                <td>{{ tarif.prix }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+
+{% endblock %}

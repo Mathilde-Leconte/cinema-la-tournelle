@@ -1,0 +1,38 @@
+{% extends 'base.back.html.twig' %}
+
+{% block title %}Contenu{% endblock %}
+
+{% block body %}
+    <a href="{{ path('app_admin_contenu_index') }}" class="btn btn-inverse-secondary mb-3">Voir la liste</a>
+    <h1>Contenu</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ contenu_front_info.id }}</td>
+            </tr>
+            <tr>
+                <th>Titre</th>
+                <td>{{ contenu_front_info.titre }}</td>
+            </tr>
+            <tr>
+                <th>Texte</th>
+                <td>{{ contenu_front_info.texte }}</td>
+            </tr>
+            <tr>
+                <th>Image</th>
+                <td>{{ contenu_front_info.image }}</td>
+            </tr>
+            <tr>
+                <th>Emplacement</th>
+                <td>{{ contenu_front_info.emplacement }}</td>
+            </tr>
+            <tr>
+                <th>IsActive</th>
+                <td>{{ contenu_front_info.isActive ? 'Yes' : 'No' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+{% endblock %}

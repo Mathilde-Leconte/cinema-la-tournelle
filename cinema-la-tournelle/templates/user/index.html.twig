@@ -1,0 +1,49 @@
+{% extends 'base.back.html.twig' %}
+
+{% block title %}User index{% endblock %}
+
+{% block body %}
+    <a href="{{ path('app_user_new') }}" class="btn btn-inverse-success p-2 mb-2">Nouveau</a>
+    <h1>Les Utilisateurs</h1>
+
+    <table class="table" data-toggle="table">
+        <thead>
+            <tr>
+                {# <th>Id</th> #}
+                <th>Email</th>
+                <th data-sortable="true">Roles</th>
+                {# <th>Password</th> #}
+                <th>Nom</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for user in users %}
+            <tr>
+                {# <td>{{ user.id }}</td> #}
+                <td>{{ user.email }}</td>
+                <td>{{ user.roles ? user.roles|json_encode : '' }}</td>
+                {# <td>{{ user.password }}</td> #}
+                <td>{{ user.nom }}</td>
+                <td>
+                    <a href="{{ path('app_user_show', {'id': user.id}) }}">
+                        <span class="menu-icon">
+                            <i class="mdi mdi-eye btn btn-rounded btn-inverse-primary m-1"></i>
+                        </span>
+                    </a>
+                    <a href="{{ path('app_user_edit', {'id': user.id}) }}">
+                        <span class="menu-icon">
+                            <i class="mdi mdi-border-color btn btn-rounded btn-inverse-warning m-1"></i>
+                        </span>
+                    </a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">Aucun utlisateur trouvé</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

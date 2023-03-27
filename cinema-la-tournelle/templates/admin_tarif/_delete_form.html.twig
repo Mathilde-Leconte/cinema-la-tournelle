@@ -1,0 +1,4 @@
+<form method="post" action="{{ path('app_admin_tarif_delete', {'id': tarif.id}) }}" onsubmit="return confirm('Etes-vous sûr de vouloir supprimer ce tarif?');">
+    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ tarif.id) }}">
+    <button class="btn btn-inverse-danger me-2">Supprimer</button>
+</form>

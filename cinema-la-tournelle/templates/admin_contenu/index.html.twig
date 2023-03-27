@@ -1,0 +1,51 @@
+{% extends 'base.back.html.twig' %}
+
+{% block title %}ContenuFrontInfo index{% endblock %}
+
+{% block body %}
+    <h1>Les Contenu</h1>
+    <a href="{{ path('app_admin_contenu_new') }}" class="btn btn-inverse-success p-2 mb-2">Nouveau</a>
+
+    <table class="table" data-toggle="table">
+        <thead>
+            <tr>
+                {# <th>Id</th> #}
+                <th data-sortable="true">Titre</th>
+                {# <th>Texte</th> #}
+                {# <th>Image</th> #}
+                <th data-sortable="true">Emplacement</th>
+                <th data-sortable="true">IsActive</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for contenu_front_info in contenu_front_infos %}
+            <tr>
+                {# <td>{{ contenu_front_info.id }}</td> #}
+                <td>{{ contenu_front_info.titre }}</td>
+                {# <td>{{ contenu_front_info.texte }}</td> #}
+                {# <td>{{ contenu_front_info.image }}</td> #}
+                <td>{{ contenu_front_info.emplacement }}</td>
+                <td>{{ contenu_front_info.isActive ? 'Yes' : 'No' }}</td>
+                <td>
+                    <a href="{{ path('app_admin_contenu_show', {'id': contenu_front_info.id}) }}">
+                        <span class="menu-icon">
+                            <i class="mdi mdi-eye btn btn-rounded btn-inverse-primary m-1"></i>
+                        </span>
+                    </a>
+                    <a href="{{ path('app_admin_contenu_edit', {'id': contenu_front_info.id}) }}">
+						<span class="menu-icon">
+							<i class="mdi mdi-border-color btn btn-rounded btn-inverse-warning m-1"></i>
+						</span>
+                    </a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">Aucun contenu trouvé</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}
