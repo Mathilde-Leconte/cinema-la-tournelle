@@ -28,7 +28,9 @@ class UserFixtures extends Fixture implements FixtureGroupInterface
         $user -> setNom("Paul");
         $encoderPassword = $this->encoder->hashPassword($user, "password");
         $user -> setPassword($encoderPassword);
+        $user -> setIsVerified(true);
         $user -> setRoles(["ROLE_USER", "ROLE_ADMIN"]);
+
         $manager->persist($user);
         
         $user = new User();
@@ -37,6 +39,7 @@ class UserFixtures extends Fixture implements FixtureGroupInterface
         $encoderPassword = $this->encoder->hashPassword($user, "password");
         $user -> setPassword($encoderPassword);
         $user -> setRoles(["ROLE_USER", "ROLE_ADMIN"]);
+        $user -> setIsVerified(true);
         $manager->persist($user);
 
         $user = new User();
@@ -45,6 +48,7 @@ class UserFixtures extends Fixture implements FixtureGroupInterface
         $encoderPassword = $this->encoder->hashPassword($user, "password");
         $user -> setPassword($encoderPassword);
         $user -> setRoles(["ROLE_USER"]);
+        $user -> setIsVerified(true);
         $manager->persist($user);
 
         $user = new User();
@@ -52,7 +56,8 @@ class UserFixtures extends Fixture implements FixtureGroupInterface
         $user -> setNom("Paul");
         $encoderPassword = $this->encoder->hashPassword($user, "password");
         $user -> setPassword($encoderPassword);
-        $user -> setRoles(["ROLE_USER"]);
+        $user -> setRoles(["ROLE_USER"]);    
+        $user -> setIsVerified(true);
         $manager->persist($user);
 
         $user = new User();
@@ -69,6 +74,7 @@ class UserFixtures extends Fixture implements FixtureGroupInterface
         $encoderPassword = $this->encoder->hashPassword($user, "password");
         $user -> setPassword($encoderPassword);
         $user -> setRoles(["ROLE_USER"]);
+        $user -> setIsVerified(true);
         $manager->persist($user);
 
 

@@ -22,20 +22,20 @@ class AdminSeanceController extends AbstractController
     }
 
     #[Route('/new', name: 'app_admin_seance_new', methods: ['GET', 'POST'])]
-    public function new(Request $request): Response
+    public function new(Request $request, SeanceRepository $seanceRepository): Response
     {
         $seance = new Seance();
         $form = $this->createForm(SeanceType::class, $seance);
         $form->handleRequest($request);
 
-        // if ($form->isSubmitted() && $form->isValid()) {
-        //     $seance->updateEnd();
-        //     $seanceRepository->save($seance, true);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $seance->updateEnd();
+            $seanceRepository->save($seance, true);
             
 
-        // // Redirect to the calendar page
-        // return $this->redirectToRoute('app_calendar_index');
-        // }
+        // Redirect to the calendar page
+        return $this->redirectToRoute('app_admin_programmation');
+        }
 
         return $this->renderForm('admin_seance/new.html.twig', [
             'seance' => $seance,

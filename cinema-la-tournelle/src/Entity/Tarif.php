@@ -25,8 +25,8 @@ class Tarif
     #[ORM\ManyToMany(targetEntity: TypeSeSeance::class, inversedBy: 'tarifs')]
     private Collection $types;
 
-    #[ORM\ManyToOne(inversedBy: 'tarifs')]
-    private ?InformationPage $informationPage = null;
+    // #[ORM\ManyToOne(inversedBy: 'tarifs')]
+    // private ?InformationPage $informationPage = null;
 
     #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $description = null;
@@ -95,17 +95,6 @@ class Tarif
         return $this;
     }
 
-    public function getInformationPage(): ?InformationPage
-    {
-        return $this->informationPage;
-    }
-
-    public function setInformationPage(?InformationPage $informationPage): self
-    {
-        $this->informationPage = $informationPage;
-
-        return $this;
-    }
 
     public function getDescription(): ?string
     {

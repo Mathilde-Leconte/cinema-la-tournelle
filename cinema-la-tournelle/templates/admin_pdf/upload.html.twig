@@ -1,0 +1,18 @@
+{% extends 'base.back.html.twig' %}
+
+{% block title %}Hello PdfController!{% endblock %}
+
+{% block body %}
+
+{% block content %}
+    <h1>Upload PDF File</h1>
+
+    {{ form_start(form) }}
+
+    {{ form_row(form.pdf_file) }}
+
+    {{ form_row(form.submit) }}
+
+    {{ form_end(form) }}
+{% endblock %}
+{% endblock %}

@@ -22,7 +22,7 @@ class AdminAffichatorController extends AbstractController
         ]);
     }
 
-    #[Route('/admin/affichator/generate', name: 'app_admin_affichator_generate', methods: ['POST'])]
+    #[Route('/affichator/generate', name: 'app_admin_affichator_generate', methods: ['POST'])]
     public function generate(Request $request, SeanceRepository $seanceRepository, LoggerInterface $logger): Response
     {
         // Get the start and end dates from the request
@@ -34,19 +34,24 @@ class AdminAffichatorController extends AbstractController
         
         // Query the events between the two dates
         $events = $seanceRepository->findByDateRange($startDate, $endDate, $logger);
-    
+
+        $logger -> info('titi');
+
         // Create a new Word document
         $phpWord = new PhpWord();
         $section = $phpWord->addSection();
+        $logger -> info('trtr');
         $section->addText('Events between '.$startDate->format('Y-m-d').' and '.$endDate->format('Y-m-d'));
         $section->addTextBreak();
     
         // Add the events to the Word document
+        $logger -> info('tata');
         foreach ($events as $event) {
             // Get the content of data and add it to the Word document
             $logger -> info('toto');
             $logger -> info($event->getDisplay());
             $content = $event->getDisplay();
+            
             $section->addText($content);
             $section->addTextBreak();
         }
@@ -55,6 +60,7 @@ class AdminAffichatorController extends AbstractController
         $writer = IOFactory::createWriter($phpWord, 'Word2007');
         $filename = 'events.docx';
         $response = new Response();
+        $logger -> info('tutu');
         $response->headers->set('Content-Type', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document');
         $response->headers->set('Content-Disposition', 'attachment;filename="' . $filename . '"');
         $writer->save('php://output');

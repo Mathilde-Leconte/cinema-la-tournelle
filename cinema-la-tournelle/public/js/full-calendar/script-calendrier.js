@@ -2,16 +2,19 @@ window.addEventListener('load', () => {
     let elementCalendrier = document.querySelector("#calendrier");
 
     if (elementCalendrier !== null) {
+        // Je vérifie si l'utilisateur à le ROLE_ADMIN
+        let userRoles = ['ROLE_ADMIN'];
+        let isEditable = userRoles.includes('ROLE_ADMIN');
 
+        // Parametrage et instalation du calendrier 
         let calendrier = new FullCalendar.Calendar(elementCalendrier, {
-            initialView: 'dayGridWeek',
+            initialView: 'timeGridWeek',
             locale: 'fr',
-            // timeZone: 'Europe/Paris',
             nowIndicator : true,
             headerToolbar: {
                 start: 'prev next today',
                 center: 'title',
-                end: 'dayGridMonth timeGridWeek dayGrid list'
+                end: 'dayGridMonth timeGridWeek list'
             },
             firstDay: 3,
             buttonText: {
@@ -27,14 +30,13 @@ window.addEventListener('load', () => {
             slotMinTime: '09:00:00',
             scrollTime: '14:00:00',
 
-            events: "/admin/programmation/json",
-            editable: true,
+            events: "/programmation/json",
+            editable: isEditable,
         });
 
         calendrier.on('eventChange', function (info) {
 
         let event = info.event;
-            console.log('toto');
             console.log(event.start);
             let seanceId = event.id;
             let start = event._instance.range.start;

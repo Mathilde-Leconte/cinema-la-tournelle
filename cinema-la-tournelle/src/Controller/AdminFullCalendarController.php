@@ -24,7 +24,7 @@ class AdminFullCalendarController extends AbstractController
     {
 
         // Get the new start and end times from the request data
-        $logger -> info('tata');
+        // $logger -> info('tata');
 
         $parameters = json_decode($request->getContent(), true);
         $start = new \DateTime($parameters['start']);
@@ -45,9 +45,9 @@ class AdminFullCalendarController extends AbstractController
         $start0String = $seance->getStart()->format('Y-m-d H:i:s');
         $end0String = $seance->getEnd()->format('Y-m-d H:i:s');
 
-        $logger -> info('toto');
-        $logger -> info($start0String);
-        $logger -> info($end0String);
+        // $logger -> info('toto');
+        // $logger -> info($start0String);
+        // $logger -> info($end0String);
         if (!$seance) {
 
             return new Response('Seance not found', 404);

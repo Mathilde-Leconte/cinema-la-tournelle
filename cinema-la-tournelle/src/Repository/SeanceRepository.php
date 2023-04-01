@@ -5,7 +5,6 @@ namespace App\Repository;
 use App\Entity\Seance;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
-use Psr\Log\LoggerInterface;
 
 
 /**

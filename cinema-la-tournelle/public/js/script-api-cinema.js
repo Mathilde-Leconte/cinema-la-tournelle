@@ -1,29 +1,9 @@
+//------------ API TMDB
 const APIMOVIE = '20c7b8d480d4a435703ad88460e996a5';
 const URLAPIMOVIE = `https://api.themoviedb.org/3/search/movie?api_key=${APIMOVIE}&language=fr&region=FR&include_image_language=fr&query=`;
 const AFFICHESDIRECTORY = 'https://image.tmdb.org/t/p/w500';
 
-
-// function findPosterUrl(movieTitle, context){
-//     console.log(movieTitle);
-//     const apiUrl = `https://api.themoviedb.org/3/search/movie?api_key=${APIMOVIE}&query=${encodeURIComponent(movieTitle)}`;
-//     console.log(apiUrl);
-//     return fetch(apiUrl)
-//         .then(response => response.json())
-//         .then(data => {
-//             console.log(data);
-//             if (data.results.length > 0) {
-//                 const posterPath = data.results[0].poster_path;
-//                 if (posterPath) {
-//                     context.src = `${AFFICHESDIRECTORY}${posterPath}`;
-//                 }
-//             }
-//             // return null;
-//         })
-//         .catch(error => console.error(error));
-// }
-
-
-
+//-------------- LES FONCTIONS
 let rechercherFilm = (titre, callback, page = 1) => {
     fetch(URLAPIMOVIE + titre + '&page=' + page)
         .then(reponse => reponse.json())
@@ -45,6 +25,7 @@ let creditFilm = (idFilm, callback) => {
         .catch(error => console.log(error));
 };
 
+//-------------- LES SELECTEURS
 let titre = document.querySelector('#film_titre');
 let synopsis = document.querySelector('#film_synopsis');
 let pays = document.querySelector('#film_pays');
@@ -54,9 +35,10 @@ let recompenses = document.querySelector('#film_recompense');
 let realisation = document.querySelector('#film_realisation');
 let distributeur = document.querySelector('#film_distributeur');
 let coutLocation = document.querySelector('#film_coutLocation');
+
+
 // si l'input qui à l'ID recherche existe alors
 if (document.getElementById('recherche')) {
-
     // je selectionne le bouton qui à l'ID lancerRecherche et je lui ajoute un ecouteur d'evenement de type click
     document.getElementById('lancerRecherche').addEventListener('click', () => {
         // je creer une variable raccourcis qui va récuperer la demande de l'utilisateur dans filmARechercher
@@ -144,7 +126,7 @@ if (document.getElementById('recherche')) {
                         ficheFilm.appendChild(affiche);
                     } else {
                         let affiche = document.createElement('img');
-                        affiche.setAttribute('src', "{{ asset('../image/no-image-found.jpeg') }}");
+                        affiche.setAttribute('src', 'https://www.publicdomainpictures.net/pictures/280000/velka/not-found-image-15383864787lu.jpg');
                         ficheFilm.appendChild(affiche);
                     }
                     // Cet div je l'ajoute à ma div résulstat

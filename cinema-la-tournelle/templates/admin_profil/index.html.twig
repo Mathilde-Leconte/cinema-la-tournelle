@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Votre profile{% endblock %}
+
+{% block body %}
+    <div class="border p-3 col-md-6 mx-auto">
+        {{form_start(form)}}
+        {{form_widget(form)}}
+        {{form_end(form)}}
+    </div>
+{% endblock %}

@@ -11,6 +11,8 @@ use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+
 
 class UserType extends AbstractType
 {
@@ -18,6 +20,8 @@ class UserType extends AbstractType
     {
         $builder
             ->add('email', EmailType::class, ["label" => "Email"])
+            // ->add('password', TextType::class, ["label" => "Mot de passe"])
+            ->add('nom', TextType::class, ["label" => "Nom"])
             // ->add('roles', ChoiceType::class, [
             //     'choices' => [
             //         'User'    => 'ROLE_USER',
@@ -26,8 +30,6 @@ class UserType extends AbstractType
             //     'multiple' => true,
             //     'expanded' => true,
             // ])
-            // ->add('password', TextType::class, ["label" => "Mot de passe"])
-            ->add('nom', TextType::class, ["label" => "Nom"])
             ->add('plainPassword', RepeatedType::class, [
                 'type' => PasswordType::class,
                 'invalid_message' => 'Les mots de passe ne sont pas identiques.',

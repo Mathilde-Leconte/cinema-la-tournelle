@@ -21,7 +21,7 @@ class AdminProgrammationController extends AbstractController
         ]);
     }
 
-    #[Route('/admin/programmation/json', name: 'app_admin_programmation_json')]
+    #[Route('/programmation/json', name: 'app_admin_programmation_json')]
     public function getEventsAsjson(Request $request, SeanceRepository $seance): JsonResponse
     {
         $startDate = new \DateTime($request->get('start'));

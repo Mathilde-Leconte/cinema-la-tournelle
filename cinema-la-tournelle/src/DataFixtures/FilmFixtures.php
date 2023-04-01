@@ -30,7 +30,6 @@ class FilmFixtures extends Fixture
         $film -> setVostFilm(true);
         $film -> setDeuxDFilm(true);
         $film -> setTroisDFilm(false);
-        // $film -> setAge(0);
         $film -> setAPartir(false);
         $film -> setinterditAns(false);
         $film -> setAPartirMois(FALSE);

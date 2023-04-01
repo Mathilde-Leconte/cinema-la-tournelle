@@ -90,7 +90,7 @@ class SeanceType extends AbstractType
                 'by_reference' => false,
                 'required'     => false,
                 'placeholder'  => 'Choisir un évènement',
-                'mapped'     => false     
+                'mapped'     => false   
 
             ])
         ;

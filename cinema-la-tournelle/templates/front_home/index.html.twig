@@ -9,7 +9,13 @@
 	<!--======================= AFFICHE =======================-->
 	<!--=====================================================-->
 		<section class="films-a-affiche">
-			<h1>Les films à l'affiche</h1>
+		<h1>Les films à l'affiche</h1>
+		<div class="dowload-p">
+		<a class="btn btn-dark" href="{{ path('app_pdf') }}" download="/public/pdf/Tournelle_Programme_-_N_114_HD.pdf">
+			Télécharger le livret
+		</a>
+		</div>
+
 			<!--=====================================================-->
 			<!--======================= CARDS =======================-->
 			<!--=====================================================-->
@@ -18,9 +24,10 @@
 				<div class="cards">
 				{% for filmSemaine in films %}
 					<div class="card">
-						<img id="poster{{ loop.index }}" class="card-img-top" alt="..." src="{{ filmSemaine.getUrl(filmSemaine.titre) | default('image/no-image-found.jpeg') }}">
+					<h5>{{ filmSemaine.titre }}</h5>
+					<img id="poster{{ loop.index }}" class="card-img-top" alt="Affiche du film" src="{{ filmSemaine.getUrl(filmSemaine.titre) | default('image/no-image-found.jpeg') }}">
+						<button type="button" data-bs-toggle="modal" data-bs-target="#modal{{ loop.index }}" class="btn-card btn btn-dark">Informations</button>
 						<div class="card-body">
-							<button type="button" data-bs-toggle="modal" data-bs-target="#modal{{ loop.index }}" class="btn-card btn btn-dark">Informations</button>
 								<!--~~~~~~~~~~~~~~~ MODAL ~~~~~~~~~~~~~~~~-->
 								<!-- https://www.youtube.com/watch?v=t8X202BumDM -->
 								<div class="modal fade" id="modal{{ loop.index }}">
@@ -29,15 +36,15 @@
 											<div class="modal-header">
 												<h5 class="modal-title" aria-labelledby="modal title">{{ filmSemaine.titre }}</h5>
 													{# {{ dump(filmSemaine.titre) }} #}
-													<button class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 											</div>
+											<button class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 											<div class="modal-films-texte">
 												<div class="modal-body" aria-describedby="content">
 													<div class="modal-film-information">
 														<p class="realisation">{{ filmSemaine.realisation }}</p>
 														<p class="casting">{{ filmSemaine.casting }}</p>
 														<p class="pays">{{ filmSemaine.pays }}</p>
-														<p class="duree">{{ filmSemaine.duree }}</p>
+														<p class="duree">{{ filmSemaine.duree }}min</p>
 														<p class="synopsis">Synopsis:<br>{{ filmSemaine.synopsis }}</p>
 														<p class="recompenses">{{ filmSemaine.recompense }}</p>
 														<p class="format"></p>
@@ -73,7 +80,7 @@
 							<p>{{ next_event_title }}</p>
 							<p>{{ next_event_start }}</p>
 						{% else %}
-							<div>No upcoming events found.</div>
+							<div>Aucune séance trouvée.</div>
 						{% endif %}
 					</div>
 				</div>

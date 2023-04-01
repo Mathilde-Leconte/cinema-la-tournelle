@@ -1,4 +1,4 @@
-window.addEventListener('load', () => {
+
 
 const dateRangePicker = document.querySelector('#date-range-picker');
 
@@ -32,7 +32,7 @@ selectedDates = selectedDates.split(/\s+-\s+/);
 
 
 
-    const url = '/admin/programmation/json?' +
+    const url = '/programmation/json?' +
         'start=' + encodeURIComponent(dateRange.start) +
         '&end=' + encodeURIComponent(dateRange.end);
 
@@ -51,7 +51,7 @@ selectedDates = selectedDates.split(/\s+-\s+/);
 
 // Send the date range to the server using AJAX
 $.ajax({
-    url: path('app_admin_affichator_generate'),
+    url: "{{ path('app_admin_affichator_generate') }}",
     type: "POST",
     data: {
         start: dateRange.start,
@@ -61,13 +61,12 @@ $.ajax({
         console.log(response);
     },
     error: function(jqXHR, textStatus, errorThrown) {
-        console.log(data.start);
         console.log(textStatus, errorThrown);
     }
 });
 
         
-    fetch('/admin/affichator/generate', {
+    fetch('/affichator/generate', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -89,5 +88,3 @@ $.ajax({
             alert('Une erreur est survenue lors de la récupération des événements.');
         });
 });
-});
-

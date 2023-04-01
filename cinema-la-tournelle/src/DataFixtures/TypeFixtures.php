@@ -13,9 +13,19 @@ class TypeFixtures extends Fixture implements DependentFixtureInterface
     public const Z  = "Ciné de Z";
     public const TETINE  = "Ciné TÉTINE";
     public const B  = "Ciné de B";
+    public const AUCUN  = "Aucun type de seance";
 
     public function load(ObjectManager $manager): void
     {
+        $type = new TypeSeSeance();
+        $type -> setNom("AUCUN");
+        $type -> setPrive(true);
+        $type -> setPublique(false);
+        $type -> setDescription("Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tempora harum sapiente distinctio obcaecati quisquam cum culpa odio fuga vitae assumenda tenetur, numquam quos praesentium perspiciatis eveniet minima nulla expedita ratione!");
+        // $type -> addTarif($this->getReference(TarifFixtures::AUCUN));
+        $manager->persist($type);
+        $this->addReference(self::AUCUN, $type);
+
         $type = new TypeSeSeance();
         $type -> setNom("CINÉ DE PEUR");
         $type -> setPrive(true);

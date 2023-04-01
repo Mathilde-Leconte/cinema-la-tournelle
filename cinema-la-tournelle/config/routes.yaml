@@ -4,3 +4,12 @@ app_generate_word_document:
     path: /generate-word-document
     methods: [POST]
     controller: App\Controller\MyController::generateWordDocument
+
+app_front_register_post:
+    path: /front/register
+    methods: [POST]
+    controller: App\Controller\FrontRegisterController::index
+
+app_pdf_upload:
+    path: /pdf/upload
+    controller: App\Controller\PdfController::upload

@@ -30,50 +30,48 @@
         {#---------------------NAVBAR---------------------#}
         {#------------------------------------------------#}
         <nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
-        	<div class="navbar container-fluid">
-        		<a class="navbar-brand p-3" href="{{ path('app_front') }}">
-					<img class="nav-logo" src="image/logo-tournelle-jaune.png" width="50" height="50" alt="">
+			<div class="navbar container-fluid">
+				<a class="navbar-brand p-3" href="{{ path('app_front') }}">
+					<img class="nav-logo" src="{{ asset('image/logo-tournelle-jaune.png') }}" width="50" height="50" alt="">
 				</a>
-        		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        			<span class="navbar-toggler-icon"></span>
-        		</button>
-        		<div class="collapse navbar-collapse" id="navbarSupportedContent">
-        			<ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        				<li class="nav-item">
-        					<a class="nav-link active" aria-current="page" href="{{ path('app_front') }}">Films</a>
-        				</li>
-        				<li class="nav-item">
-        					<a class="nav-link" href="#">Programmation</a>
-        				</li>
-        				<li class="nav-item">
-                            <a class="nav-link" href="{{ path('app_front_info') }}">Informations et Tarifs</a>
-        				</li>
-						<li>
-		{% for info in infos %}
-						    <a class="p-2" href="{{ info.facebook }}"><img src="{{ asset('image/icons/facebook.svg') }}" alt=""></a>
-        			    	<a class="p-2 pe-5" href="{{ info.instagram }}"><img src="{{ asset('image/icons/instagram.svg') }}"alt=""></a>
+				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbarSupportedContent">
+					<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+						<li class="nav-item">
+							<a class="nav-link active" aria-current="page" href="{{ path('app_front') }}">Films</a>
 						</li>
-        			</ul>
+						<li class="nav-item">
+							<a class="nav-link" href="{{ path('app_front_programmation') }}">Programmation</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="{{ path('app_front_info') }}">Informations et Tarifs</a>
+						</li>
+	{% for info in infos %}
+						<li>
+							<a class="p-2" href="{{ info.facebook }}"><img src="{{ asset('image/icons/facebook.svg') }}" alt=""></a>
+							<a class="p-2 pe-5" href="{{ info.instagram }}"><img src="{{ asset('image/icons/instagram.svg') }}"alt=""></a>
+						</li>
+					</ul>
 					<div class="users">
 						<div class="user-admin">
-						{% if is_granted("ROLE_USER") %}
-						{% if is_granted ("ROLE_ADMIN") %}
+							{% if is_granted("ROLE_USER") %}
+								<a class="p-3 text-white" href="{{ path('app_logout')}}"><img alt="">Déconnexion</a>
+								<a class="p-3" href="{{ path('app_admin_profil')}}"><img src="{{ asset('image/icons/user.svg') }}" alt=""></a>
+							{% if is_granted ("ROLE_ADMIN") %}
 								<a class="p-3 text-white" href="{{ path('app_admin_dashboard')}}" target="_blank"><img alt="">Admin</a>
-								<a class="p-3 text-white" href="{{ path('app_logout')}}"><img alt="">Déconnexion</a>
-								<a class="p-3" href="{{ path('app_login')}}"><img src="{{ asset('image/icons/user.svg') }}" alt=""></a>
-						{% endif %}
-								<a class="p-3 text-white" href="{{ path('app_logout')}}"><img alt="">Déconnexion</a>
-								<a class="p-3" href="{{ path('app_login')}}"><img src="{{ asset('image/icons/user.svg') }}" alt=""></a>
+							{% endif %}
 						</div>
-						
-						{% else %}
+						<div>
+							{% else %}
 							<div class="user">
 								<a class="p-3" href="{{ path('app_login')}}"><img src="{{ asset('image/icons/user.svg') }}" alt=""></a>
 							</div>
-						{% endif %}
-						
+							{% endif %}
+						</div>
 					</div>
-        	    </div>
+				</div>
             </div>
         </nav>
     </header>
@@ -85,69 +83,75 @@
     {#------------------------------------------------#}
     {#---------------------FOOTER---------------------#}
     {#------------------------------------------------#}
-    <footer class="max-vh-2 bg-dark text-white text-center text-lg-start">
-    	<div class="container p-4">
-    	
+    <footer class=" footer max-vh-2 bg-dark text-white text-center text-lg-start">
+		<div class="container p-4">
 			{# Le footer est en 4 colonnes, avec un système de <grid> #}
 			<div class="row">
-                
-    			<div class="adresse col-lg-3 col-md-6 mb-4 mb-md-0">
-    				<h5 class="text-uppercase mb-3">Adresse</h5>
-    				<p>{{ info.numero ~' '~ info.rue}}</p>
-    				<p>{{ info.codePostale }}</p>
-    				<p>{{ info.ville }}</p>
-    			</div>
-    
-    			<div class="contact col-lg-3 col-md-6 mb-4 mb-md-0 ">
-    				<h5 class="text-uppercase mb-3">Contacts</h5>
-    				<div class="d-flex">
-    					<p class="pe-2">La programmation:</p>
-    					<a href="tel:+33{{ info.telProgrammation }}" class="text-white">0{{ info.telProgrammation }}</a>
-    				</div>
-    				<div class="telephone d-flex ">
-    					<p class="pe-2">Administration:</p>
-    					<a href="tel:+33{{ info.telAdmin }}" class="text-white">0{{ info.telAdmin }}</a>
-    				</div>
-    			</div>
-    
-    			<div class="reseaux col-lg-2 col-md-6 mb-4 mb-md-0">
-    				<h5 class="text-uppercase mb-3">réseaux</h5>
-    				<ul class="list-unstyled d-flex">
-    					<li>
-    						<a href="{{ info.facebook }}" class="text-white p-2"><img src="{{ asset('image/icons/facebook.svg') }}" alt=""></a>
-    					</li>
-    					<li>
-    						<a href="{{ info.instagram }}" class="text-white p-2"><img src="{{ asset('image/icons/instagram.svg') }}" alt=""></a>
-    					</li>
-    				</ul>
-    			</div>
-    
-    			<div class="img-footer col-lg-4 col-md-6 mb-4 mb-md-0">
-    				<img class="img-fluid" src="../image/image-footer-latournelle.jpeg" alt="">
-    			</div>
-    		{% endfor %}
-    		</div>
+                <div class="adresse col-lg-3 col-md-6 mb-4 mb-md-0">
+					<h5 class="text-uppercase mb-3">Adresse</h5>
+					<p>{{ info.numero ~' '~ info.rue}}</p>
+					<p>{{ info.codePostale }}</p>
+					<p>{{ info.ville }}</p>
+				</div>
+				<div class="contact col-lg-3 col-md-6 mb-4 mb-md-0 ">
+					<h5 class="text-uppercase mb-3">Contacts</h5>
+					<div class="d-flex">
+						<p class="pe-2">La programmation:</p>
+						<a href="tel:+33{{ info.telProgrammation }}" class="text-white">0{{ info.telProgrammation }}</a>
+					</div>
+					<div class="telephone d-flex ">
+						<p class="pe-2">Administration:</p>
+						<a href="tel:+33{{ info.telAdmin }}" class="text-white">0{{ info.telAdmin }}</a>
+					</div>
+				</div>
+				<div class="reseaux col-lg-2 col-md-6 mb-4 mb-md-0">
+					<h5 class="text-uppercase mb-3">réseaux</h5>
+					<ul class="list-unstyled d-flex">
+						<li>
+							<a href="{{ info.facebook }}" class="text-white p-2"><img src="{{ asset('image/icons/facebook.svg') }}" alt=""></a>
+						</li>
+						<li>
+							<a href="{{ info.instagram}}" class="text-white p-2"><img src="{{ asset('image/icons/instagram.svg') }}" alt=""></a>
+						</li>
+					</ul>
+				</div>
+				<div class="img-footer col-lg-4 col-md-6 mb-4 mb-md-0">
+					<img class="img-fluid" src="../image/image-footer-latournelle.jpeg" alt="">
+				</div>
+	{% endfor %}
+			</div>
+	</div>
+		<!-- Copyright JS -->
+		<div class="copyright text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+			<a class="text-white w-25 " href="https://mdbootstrap.com/">MDBootstrap.com</a>
     	</div>
-    	<!-- Copyright JS -->
-    	<div class="copyright text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
-    		© 2020 Copyright:
-    		<a class="text-white w-25 " href="https://mdbootstrap.com/">MDBootstrap.com</a>
-    	</div>
-    	<!-- Copyright -->
     </footer>
 
 
-	
+	 {#------------------------------------------------#}
+    {#---------------------SCRIPT---------------------#}
+    {#------------------------------------------------#}
 
-    {#--------------------JS CDN BOOTSTRAP----------------------#}
+	{#--------------------JS CDN BOOTSTRAP----------------------#}
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
     
+	<!-- FULL CALENDAR -->
+    <script src="{{ asset('js/full-calendar/core/index.global.js') }}"></script>
+    <script src="{{ asset('js/full-calendar/daygrid/index.global.js') }}"></script>
+    <script src="{{ asset('js/full-calendar/interaction/index.global.js') }}"></script>
+    <script src="{{ asset('js/full-calendar/list/index.global.js') }}"></script>
+    <script src="{{ asset('js/full-calendar/timegrid/index.global.js') }}"></script>
+    <script src="{{ asset('js/full-calendar/script-calendrier.js') }}"></script>
 
     {#--------------------JS----------------------#}
     <script src="{{ asset('js/script-base-front-home.js') }}"></script>
     <script src="{{ asset('js/script-front-home.js') }}"></script>
+
 	<!-- API-Cinema -->
 	<script src="{{ asset('js/script-api-cinema.js') }}"></script>
+
+	<!-- DOWNLOAD-P -->
+	<script src="{{ asset('js/script-download.js') }}"></script>
 
     {% block javascripts %}
 	{% endblock %}
